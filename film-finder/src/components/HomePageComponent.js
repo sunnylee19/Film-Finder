@@ -7,10 +7,8 @@ class HomePageComponent extends React.Component {
     render() {
         return (
             <div>
-
-
                 <nav className="navbar navbar-expand-md navbar-dark bg-dark navbar-static-top">
-                    <div className="navbar-brand">Film Finder</div>
+                    <div className="navbar-brand logo">Film Finder</div>
 
                     <div  className="navbar-collapse">
                         <form className="form-inline col-lg-12 mx-auto">
