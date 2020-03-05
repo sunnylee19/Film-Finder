@@ -1,0 +1,30 @@
+wbdv-results-search-component {
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    color: black
+}
+
+wbdv-search-button {
+    color: cyan;
+}
+
+wbdv-movie-title#spiderman {
+    font-family: Impact, serif;
+}
+
+wbdv-details-button {
+    border-style: double;
+    border-color: black;
+    border-width: thin;
+}
+
+h1 {
+    font-family: Impact, serif;
+    border-color: white;
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
