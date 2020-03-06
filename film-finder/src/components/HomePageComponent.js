@@ -1,11 +1,35 @@
 import React from "react";
 import '../css/home-page-css.css';
 import RecommendationComponent from "./RecommendationComponent";
+import query from '../common/query';
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import UserPageComponent from "./UserPageComponent";
 import ResultsComponent from "./ResultsComponent";
 
 class HomePageComponent extends React.Component {
+
+    state = {
+        searchText: ''
+    }
+
+    _doSearch() {
+        this.props.history.push(query('/movies', {
+            s: this.state.searchText
+        }));
+    }
+
+    _handleSearchTextChange = (event) => this.setState({searchText: event.target.value});
+
+    _handleSearchKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            this._doSearch();
+        }
+    }
+
+    _handleSearchButtonPress = (event) => {
+        event.preventDefault();
+        this._doSearch();
+    }
 
     render() {
         return (
@@ -16,9 +40,13 @@ class HomePageComponent extends React.Component {
                     <div  className="navbar-collapse">
                         <form className="form-inline col-lg-12 mx-auto">
                             <input className="form-control mr-sm-2 w-50" type="text"
+                                   value={this.state.searchText}
+                                   onChange={this._handleSearchTextChange}
+                                   onKeyPress={this._handleSearchKeyPress}
                                    placeholder="Find movies"
                                    aria-label="Search"/>
                             <button className="btn btn-outline-info my-2 my-sm-0"
+                                    onClick={this._handleSearchButtonPress}
                                     type="submit">Search
                             </button>
                         </form>
@@ -31,7 +59,7 @@ class HomePageComponent extends React.Component {
                 </nav>
                 <RecommendationComponent/>
 
-                {/* add routing here */}
+                {null/* add routing here
                 <Router>
 
                     <Route path="/profile/:profileId"
@@ -52,7 +80,7 @@ class HomePageComponent extends React.Component {
                            }
                     />
 
-                </Router>
+                </Router> */}
             </div>
         )
     }

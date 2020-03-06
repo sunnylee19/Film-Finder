@@ -13,12 +13,6 @@ class ResultsSearchComponent extends React.Component {
 
                 <input/>
                 <button>Search</button>
-
-                <ul>
-                    <li>
-                        <ResultsGridComponent/>
-                    </li>
-                </ul>
             </div>
         )
     }

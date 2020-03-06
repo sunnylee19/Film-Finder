@@ -1,5 +1,5 @@
 import React from "react";
-import {findAllMovies} from "../services/FilmFinderService"
+import {searchMoviesByTitle} from "../services/MovieService"
 import '../css/home-page-css.css';
 import '../css/user-page-css.css';
 import ResultsSearchComponent from "./ResultsSearchComponent";
@@ -17,15 +17,27 @@ class ResultsComponent extends React.Component {
         movies: []
     }
 
+    async searchMovies() {
+        const queryParams = new URLSearchParams(this.props.location.search);
+        const searchTerm = queryParams.get('s');
+        if (!searchTerm) return;
+        const movies = await searchMoviesByTitle(searchTerm);
+
+        this.setState({
+            movies
+        });
+    }
+
     // component did mount from the extension.
     componentDidMount = async () => {
-        const movies = await findAllMovies()
-
+        await this.searchMovies();
     }
 
     // component did update from the extension.
-    componentDidUpdate(prevProps, prevState, snapshot) {
-
+    async componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.location.search !== prevProps.location.search) {
+            await this.searchMovies();
+        }
     }
 
     // toggle between grid and layout
@@ -60,13 +72,13 @@ class ResultsComponent extends React.Component {
                 {/* grid format for the components */}
 
                 {
-                    this.state.displayResults && this.toggle && <ResultsGridComponent
-                        showMovieResults={this.showMovieResults}/>
+                    this.state.displayResults && this.state.layout === 'grid' && this.toggle && <ResultsGridComponent
+                        showMovieResults={this.showMovieResults} movies={this.state.movies}/>
                 }
 
                 {
-                    this.state.displayResults && this.toggle && <ResultsListComponent
-                        showMovieResults={this.showMovieResults}/>
+                    this.state.displayResults && this.state.layout === 'table' && this.toggle && <ResultsListComponent
+                        showMovieResults={this.showMovieResults} movies={this.state.movies}/>
                 }
 
             </div>
