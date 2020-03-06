@@ -9,6 +9,8 @@ class ResultsNotExistComponent extends React.Component {
             <div>
                 Sorry, no results are found.
 
+                <br/>
+
                 <img src="https://www.emojirequest.com/images/SorryEmoji.jpg"/>
             </div>
         )

@@ -7,6 +7,7 @@ import '../css/results-page-css.css'
 import ResultsGridComponent from "./ResultsGridComponent";
 import UserPageComponent from "./UserPageComponent";
 import ResultsListComponent from "./ResultsListComponent";
+import ResultsNotExistComponent from "./ResultsNotExistComponent";
 
 class ResultsComponent extends React.Component {
 
@@ -68,6 +69,8 @@ class ResultsComponent extends React.Component {
                     this.state.displayResults && this.toggle && <ResultsListComponent
                         showMovieResults={this.showMovieResults}/>
                 }
+
+                <ResultsNotExistComponent/>
 
             </div>
         )
