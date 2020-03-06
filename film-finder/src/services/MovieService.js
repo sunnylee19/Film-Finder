@@ -1,8 +1,8 @@
 import rawQuery from '../common/query';
-import {OMDB_MOVIES_URL} from '../common/constants';
+import {OMDB_MOVIES_URL, API_KEY} from '../common/constants';
 import Movie from '../models/Movie';
 
-const query = (queryParams) => fetch(rawQuery(OMDB_MOVIES_URL, {...queryParams, apikey: process.env.REACT_APP_OMDB_API_KEY}));
+const query = (queryParams) => fetch(rawQuery(OMDB_MOVIES_URL, {...queryParams, apikey: API_KEY}));
 
 export const searchMoviesByTitle = async (searchQuery, page=1) => {
     const result = await query({s: searchQuery, type: 'movie', page});
