@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {findMovieById} from '../../services/MovieService';
 import '../../css/details-page-css.css';
 import MovieCommentComponent from './MovieCommentComponent';
+import NavBarComponent from '../common/NavBarComponent';
 
 export default ({match}) => {
     const [movie, setMovie] = useState(null);
@@ -13,25 +14,7 @@ export default ({match}) => {
     }, [match.params.movieId]);    
     return (
         <div>
-            <nav className="navbar navbar-expand-md navbar-dark bg-dark navbar-static-top">
-                <div className="navbar-brand logo">Film Finder</div>
-
-                <div  className="navbar-collapse">
-                    <form className="form-inline col-lg-12 mx-auto">
-                        <input className="form-control mr-sm-2 w-50" type="text"
-                                placeholder="Find movies"
-                                aria-label="Search"/>
-                        <button className="btn btn-outline-info my-2 my-sm-0"
-                                type="submit">Search
-                        </button>
-                    </form>
-                </div>
-                <div>
-                    <a className="nav-link" href="#">
-                        Log out <i className="fas fa-user"></i>
-                    </a>
-                </div>
-            </nav>
+            <NavBarComponent/>
             {movie &&
             <div className="container">
                 <div className="row">
