@@ -8,8 +8,8 @@ import NavBarComponent from "./components/NavBarComponent";
 
 const App = () =>
     // <SignInPageComponent/>;
-    //<HomePageComponent/>;
-    <UserPageComponent/>;
+    <HomePageComponent/>;
+    // <UserPageComponent/>;
     //<ResultsComponent/>;
     //<NavBarComponent/>;
 

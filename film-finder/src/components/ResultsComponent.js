@@ -1,5 +1,5 @@
 import React from "react";
-import {findAllMovies} from "../services/FilmFinderService"
+import {searchMoviesByTitle} from "../services/MovieService"
 import '../css/home-page-css.css';
 import '../css/user-page-css.css';
 import ResultsSearchComponent from "./ResultsSearchComponent";
@@ -7,7 +7,6 @@ import '../css/results-page-css.css'
 import ResultsGridComponent from "./ResultsGridComponent";
 import UserPageComponent from "./UserPageComponent";
 import ResultsListComponent from "./ResultsListComponent";
-import ResultsNotExistComponent from "./ResultsNotExistComponent";
 
 class ResultsComponent extends React.Component {
 
@@ -18,15 +17,28 @@ class ResultsComponent extends React.Component {
         movies: []
     }
 
+    async searchMovies() {
+        const queryParams = new URLSearchParams(this.props.location.search)
+        const searchTerm = queryParams.get('s');
+        if (!searchTerm) return;
+
+        const movies = await searchMoviesByTitle(searchTerm);
+
+        this.setState({
+            movies
+                      });
+    }
+
     // component did mount from the extension.
     componentDidMount = async () => {
-        const movies = await findAllMovies()
-
+        await this.searchMovies();
     }
 
     // component did update from the extension.
-    componentDidUpdate(prevProps, prevState, snapshot) {
-
+    async componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.location.search !== prevProps.location.search) {
+            await this.searchMovies();
+        }
     }
 
     // toggle between grid and layout
@@ -62,16 +74,13 @@ class ResultsComponent extends React.Component {
 
                 {
                     this.state.displayResults && this.toggle && <ResultsGridComponent
-                        showMovieResults={this.showMovieResults}/>
+                        showMovieResults={this.showMovieResults} movies={this.state.movies}/>
                 }
 
                 {
                     this.state.displayResults && this.toggle && <ResultsListComponent
-                        showMovieResults={this.showMovieResults}/>
+                        showMovieResults={this.showMovieResults} movies={this.state.movies}/>
                 }
-
-                <ResultsNotExistComponent/>
-
             </div>
         )
     }
