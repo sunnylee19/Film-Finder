@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default ({movie}) => (
     <div class="col-xs-12 col-sm-6 col-md-3 card">
@@ -9,8 +10,12 @@ export default ({movie}) => (
 
         Best Stream: <a href="https://www.netflix.com/">Netflix</a>
 
-        <button className={"wbdv-details-button btn btn-default"}>
-            Details
-        </button>
+        
+            <button className="wbdv-details-button btn btn-default">
+                <Link to={`/movies/${movie.id}`}>
+                    Details
+                </Link>
+            </button>
+        
     </div>
 );
