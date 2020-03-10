@@ -1,5 +1,3 @@
-/* hardcoded for now, since we do not have private API key for prototype yet. */
-
 export const OMDB_MOVIES_URL = 'http://www.omdbapi.com'
 // API key should not be hardcoded but oh well
 // Will fix this later, once we move API to server

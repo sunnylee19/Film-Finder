@@ -2,9 +2,6 @@ import React from "react";
 import '../../css/home-page-css.css';
 import RecommendationComponent from "../../components/recommendation/RecommendationComponent";
 import query from '../../common/query'
-import {BrowserRouter as Router, Link, Route} from "react-router-dom";
-import UserPageComponent from "../user/UserPageComponent";
-import ResultsComponent from "../results/ResultsComponent";
 
 class HomePageComponent extends React.Component {
 
