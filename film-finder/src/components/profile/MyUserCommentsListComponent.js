@@ -1,6 +1,6 @@
 import React from "react";
-import '../css/my-user-comment-list-css.css';
-import CommentComponent from "./CommentComponent";
+import '../../css/my-user-comment-list-css.css';
+import CommentComponent from "../common/CommentComponent";
 
 class MyUserCommentsListComponent extends React.Component {
 

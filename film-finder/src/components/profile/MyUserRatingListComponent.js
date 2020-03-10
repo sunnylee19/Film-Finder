@@ -1,6 +1,6 @@
 import React from "react";
-import '../css/my-user-rating-list-css.css';
-import RatingComponent from "./RatingComponent";
+import '../../css/my-user-rating-list-css.css';
+import RatingComponent from "../rating/RatingComponent";
 class MyUserRatingListComponent extends React.Component {
 
     render() {

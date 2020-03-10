@@ -1,5 +1,5 @@
 import React from "react";
-import '../css/movie-card-css.css';
+import '../../css/movie-card-css.css';
 
 class MovieComponent extends React.Component {
 

@@ -1,11 +1,11 @@
 import React from "react";
-import {searchMoviesByTitle} from "../services/MovieService"
-import '../css/home-page-css.css';
-import '../css/user-page-css.css';
+import {searchMoviesByTitle} from "../../services/MovieService"
+import '../../css/home-page-css.css';
+import '../../css/user-page-css.css'
 import ResultsSearchComponent from "./ResultsSearchComponent";
-import '../css/results-page-css.css'
+import '../../css/results-page-css.css'
 import ResultsGridComponent from "./ResultsGridComponent";
-import UserPageComponent from "./UserPageComponent";
+import UserPageComponent from "../user/UserPageComponent";
 import ResultsListComponent from "./ResultsListComponent";
 
 class ResultsComponent extends React.Component {
@@ -24,10 +24,9 @@ class ResultsComponent extends React.Component {
 
         const movies = await searchMoviesByTitle(searchTerm);
 
-        this.setState({
-            movies
-                      });
+        this.setState({movies});
     }
+
 
     // component did mount from the extension.
     componentDidMount = async () => {

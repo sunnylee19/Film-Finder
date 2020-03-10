@@ -1,5 +1,5 @@
 import React from "react"
-import '../css/results-page-css.css'
+import '../../css/results-page-css.css'
 import ResultsGridComponent from "./ResultsGridComponent";
 import ResultsListComponent from "./ResultsListComponent";
 
