@@ -70,8 +70,6 @@ class ResultsComponent extends React.Component {
 
                 Based on the query you have provided, here are the results:
 
-                <ResultsSearchComponent/>
-
                 {/* grid format for the components */}
 
                 <h1>Grid View:</h1>
@@ -81,12 +79,16 @@ class ResultsComponent extends React.Component {
                         showMovieResults={this.showMovieResults} movies={this.state.movies}/>
                 }
 
+                {/*
+
                 <h1>Table View:</h1>
 
                 {
                     this.state.displayResults && this.toggle && <ResultsListComponent
                         showMovieResults={this.showMovieResults} movies={this.state.movies}/>
                 }
+
+                */}
             </div>
         )
     }

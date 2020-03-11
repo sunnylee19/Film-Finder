@@ -4,6 +4,8 @@ import '../../css/movie-card-css.css'
 // try W3 schools card:
 // source: https://www.w3schools.com/w3css/w3css_cards.asp
 
+// To Do: make it dynamic, instead of placeholder data.
+
 export default ({movie}) => (
     <div className="row w3-container">
         <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 w3-card-4">

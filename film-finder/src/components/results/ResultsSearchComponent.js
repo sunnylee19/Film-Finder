@@ -1,6 +1,4 @@
 import React from "react"
-import ResultsGridComponent from "./ResultsGridComponent";
-import ResultsListComponent from "./ResultsListComponent";
 
 class ResultsSearchComponent extends React.Component {
 

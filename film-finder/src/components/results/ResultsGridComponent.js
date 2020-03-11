@@ -24,19 +24,8 @@ class ResultsGridComponent extends React.Component {
                 <h1>Movie Results: </h1>
 
                 <div class="row">
-                    {/*
                     {this.props.movies.map(
                         movie => <ResultsGridItemComponent movie={movie} key={movie.id}/>)}
-                        */}
-
-                    <ResultsGridItemComponent/>
-
-                    {/* Can add movies later if they want to to results. */}
-                    <div className="wbdv-add-movie">
-                        <FontAwesomeIcon icon={faPlusCircle} size={"2x"}>
-                            Add more movies to results
-                        </FontAwesomeIcon>
-                    </div>
                 </div>
             </div>
         )
