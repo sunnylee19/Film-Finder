@@ -1,5 +1,5 @@
 import React from "react";
-import '../css/movie-card-css.css';
+import '../../css/movie-card-css.css';
 
 class MovieComponent extends React.Component {
 
@@ -38,7 +38,6 @@ class MovieComponent extends React.Component {
                                             <div className="badge badge-secondary mr-sm-1">
                                                 Comedy
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>

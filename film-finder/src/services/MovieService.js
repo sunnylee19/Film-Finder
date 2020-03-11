@@ -14,6 +14,6 @@ export const searchMoviesByTitle = async (searchQuery, page=1) => {
 export const findMovieById = async (id) => {
     const result = await query({i: id});
     const asJson = await result.json();
-    
+
     return Movie.parse(asJson);
 }

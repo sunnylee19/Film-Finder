@@ -1,5 +1,5 @@
 import React from "react";
-import MovieListComponent from "./MovieListComponent";
+import MovieListComponent from "../movie/MovieListComponent";
 
 
 class RecommendationComponent extends React.Component {

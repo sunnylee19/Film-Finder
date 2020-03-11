@@ -1,11 +1,12 @@
 import React from "react";
-import {searchMoviesByTitle} from "../services/MovieService"
-import '../css/home-page-css.css';
-import '../css/user-page-css.css';
+import {searchMoviesByTitle} from "../../services/MovieService"
+import '../../css/home-page-css.css';
+import '../../css/user-page-css.css'
 import ResultsSearchComponent from "./ResultsSearchComponent";
-import '../css/results-page-css.css'
+import '../../css/results-page-css.css'
 import ResultsGridComponent from "./ResultsGridComponent";
-import UserPageComponent from "./UserPageComponent";
+import NavBarComponent from "../common/NavBarComponent";
+
 import ResultsListComponent from "./ResultsListComponent";
 
 class ResultsComponent extends React.Component {
@@ -18,15 +19,15 @@ class ResultsComponent extends React.Component {
     }
 
     async searchMovies() {
-        const queryParams = new URLSearchParams(this.props.location.search);
+        const queryParams = new URLSearchParams(this.props.location.search)
         const searchTerm = queryParams.get('s');
         if (!searchTerm) return;
+
         const movies = await searchMoviesByTitle(searchTerm);
 
-        this.setState({
-            movies
-        });
+        this.setState({movies});
     }
+
 
     // component did mount from the extension.
     componentDidMount = async () => {
@@ -61,26 +62,17 @@ class ResultsComponent extends React.Component {
         return (
 
             <div>
-                <h1>Film Finder Search Results</h1>
+
+                <NavBarComponent/>
 
                 <br/>
-
-                <ResultsSearchComponent/>
-
-                Based on the query you have provided, here are the results:
 
                 {/* grid format for the components */}
 
                 {
-                    this.state.displayResults && this.state.layout === 'grid' && this.toggle && <ResultsGridComponent
+                    this.state.displayResults && this.toggle && <ResultsGridComponent
                         showMovieResults={this.showMovieResults} movies={this.state.movies}/>
                 }
-
-                {
-                    this.state.displayResults && this.state.layout === 'table' && this.toggle && <ResultsListComponent
-                        showMovieResults={this.showMovieResults} movies={this.state.movies}/>
-                }
-
             </div>
         )
     }

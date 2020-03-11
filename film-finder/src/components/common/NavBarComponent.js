@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLocation, useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import query from '../../common/query';
-import '../../css/nav-bar-component.css';
+import '../../../src/css/nav-bar-component.css'
 
 export default props => {
     const queryParams = new URLSearchParams(useLocation().search);
@@ -24,11 +24,11 @@ export default props => {
             <div  className="navbar-collapse">
                 <form className="form-inline col-lg-12 mx-auto">
                     <input className="form-control mr-sm-2 w-50" type="text"
-                            value={searchText}
-                            onChange={handleSearchTextChange}
-                            onKeyPress={handleSearchKeyPress}
-                            placeholder="Find movies"
-                            aria-label="Search"/>
+                           value={searchText}
+                           onChange={handleSearchTextChange}
+                           onKeyPress={handleSearchKeyPress}
+                           placeholder="Find movies"
+                           aria-label="Search"/>
                     <button className="btn btn-outline-info my-2 my-sm-0"
                             onClick={handleSearchButtonPress}
                             type="submit">Search
