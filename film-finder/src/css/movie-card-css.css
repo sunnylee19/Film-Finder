@@ -17,3 +17,8 @@ card {
     margin-left: 50px;
     padding: 10px;
 }
+
+.wbdv-list-item-border {
+    border-style: solid;
+    margin-bottom: 10px;
+}
