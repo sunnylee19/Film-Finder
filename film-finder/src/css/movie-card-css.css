@@ -5,11 +5,12 @@ h3 {
     color: blue;
 }
 
-img {
+img#wbdv-results {
     margin-left: 50px;
     padding: 10px;
     width: 100px;
     height: 100px;
+    position: center;
 }
 
 card {
