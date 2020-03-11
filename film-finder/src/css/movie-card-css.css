@@ -1,3 +1,5 @@
+/* Source: https://www.w3schools.com/w3css/w3css_cards.asp */
+
 h3 {
     border-style: double;
     border-width: 2px;
@@ -8,14 +10,27 @@ h3 {
 img#wbdv-results {
     margin-left: 50px;
     padding: 10px;
-    width: 100px;
-    height: 100px;
     position: center;
+
+    /* responsive measures */
+    max-width: 200px;
+    height: auto;
+    box-sizing: content-box;
 }
 
-card {
+w3-card {
     margin-left: 50px;
     padding: 10px;
+    height: auto;
+
+    /* make card responsive as well */
+    box-sizing: border-box;
+    width: 200px;
+}
+
+w3-card-4 {
+    padding: 15px;
+    margin-left: 50px;
 }
 
 .wbdv-list-item-border {
