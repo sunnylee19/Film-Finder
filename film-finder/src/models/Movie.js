@@ -14,29 +14,29 @@ export default class Movie {
     }
 
     static parse({
-                     Title,
-                     Year,
-                     Rated,
-                     Released,
-                     Runtime,
-                     Genre = '',
-                     Director,
-                     Writer,
-                     Plot,
-                     Poster,
-                     imdbID
-                 }) {
+        Title,
+        Year,
+        Rated,
+        Released,
+        Runtime,
+        Genre = '',
+        Director,
+        Writer,
+        Plot,
+        Poster,
+        imdbID
+    }) {
         return new Movie({
-                             title: Title,
-                             year: Year,
-                             rated: Rated,
-                             releaseDate: Released,
-                             runtime: Runtime,
-                             genres: Genre.split(',').map(genre => genre.trim()),
-                             director: Director,
-                             plot: Plot,
-                             posterUrl: Poster,
-                             id: imdbID
-                         })
+            title: Title,
+            year: Year,
+            rated: Rated,
+            releaseDate: Released,
+            runtime: Runtime,
+            genres: Genre.split(',').map(genre => genre.trim()),
+            director: Director,
+            plot: Plot,
+            posterUrl: Poster,
+            id: imdbID
+        })
     }
 }
