@@ -64,31 +64,15 @@ class ResultsComponent extends React.Component {
             <div>
 
                 <NavBarComponent/>
-                <h1>Film Finder Search Results</h1>
 
                 <br/>
 
-                Based on the query you have provided, here are the results:
-
                 {/* grid format for the components */}
-
-                <h1>Grid View:</h1>
 
                 {
                     this.state.displayResults && this.toggle && <ResultsGridComponent
                         showMovieResults={this.showMovieResults} movies={this.state.movies}/>
                 }
-
-                {/*
-
-                <h1>Table View:</h1>
-
-                {
-                    this.state.displayResults && this.toggle && <ResultsListComponent
-                        showMovieResults={this.showMovieResults} movies={this.state.movies}/>
-                }
-
-                */}
             </div>
         )
     }

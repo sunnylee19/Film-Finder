@@ -21,7 +21,7 @@ class ResultsGridComponent extends React.Component {
         return (
             <div className="container">
 
-                <h1>Movie Results: </h1>
+                <h2>Search Results</h2>
 
                 <div class="row">
                     {this.props.movies.map(
