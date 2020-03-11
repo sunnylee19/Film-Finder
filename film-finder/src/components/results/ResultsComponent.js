@@ -15,17 +15,19 @@ class ResultsComponent extends React.Component {
         layout: 'grid',
         displayResults: true,
         newMovieResult: 'New Movie Result',
-        movies: []
+        movies: [],
+        loading: true
     }
 
     async searchMovies() {
+        this.setState({loading: true});
         const queryParams = new URLSearchParams(this.props.location.search)
         const searchTerm = queryParams.get('s');
         if (!searchTerm) return;
 
         const movies = await searchMoviesByTitle(searchTerm);
 
-        this.setState({movies});
+        this.setState({movies, loading: false});
     }
 
 
@@ -71,7 +73,7 @@ class ResultsComponent extends React.Component {
 
                 {
                     this.state.displayResults && this.toggle && <ResultsGridComponent
-                        showMovieResults={this.showMovieResults} movies={this.state.movies}/>
+                        loading={this.state.loading} movies={this.state.movies}/>
                 }
             </div>
         )
