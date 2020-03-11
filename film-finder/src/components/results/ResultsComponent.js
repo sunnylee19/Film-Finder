@@ -5,6 +5,7 @@ import '../../css/user-page-css.css'
 import ResultsSearchComponent from "./ResultsSearchComponent";
 import '../../css/results-page-css.css'
 import ResultsGridComponent from "./ResultsGridComponent";
+import NavBarComponent from "../common/NavBarComponent";
 
 import ResultsListComponent from "./ResultsListComponent";
 
@@ -61,6 +62,8 @@ class ResultsComponent extends React.Component {
         return (
 
             <div>
+
+                <NavBarComponent/>
                 <h1>Film Finder Search Results</h1>
 
                 <br/>
