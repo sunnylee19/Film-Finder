@@ -21,7 +21,7 @@ class ResultsGridComponent extends React.Component {
         return (
             <div className="container">
 
-                <h2>Search Results</h2>
+                <h2 className="search-results-title">Search Results</h2>
 
                 <div class="row d-flex justify-content-center">
                     {this.props.movies.map(movie => <ResultsGridItemComponent movie={movie} key={movie.id}/>)}

@@ -8,7 +8,7 @@ class RecommendationComponent extends React.Component {
         return (
             <div>
                 <div className="text-center mt-5">
-                    <h1>Hello Jose!</h1>
+                    <h1 className="user-greeting">Hello Jose!</h1>
                 </div>
                 <div>
                     <MovieListComponent/>
