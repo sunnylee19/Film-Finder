@@ -8,7 +8,14 @@ export const searchMoviesByTitle = async (searchQuery, page=1) => {
     const result = await query({s: searchQuery, type: 'movie', page});
     const asJson = await result.json();
     if (!asJson.Search) return [];
-    return asJson.Search.map(item => Movie.parse(item));
+
+    const movies = asJson.Search.map(item => Movie.parse(item));
+    let foundIds = [];
+    return movies.filter(item => {
+        const result = !(foundIds.find(id => id === item.id));
+        foundIds.push(item.id);
+        return result;
+    });
 }
 
 export const findMovieById = async (id) => {
