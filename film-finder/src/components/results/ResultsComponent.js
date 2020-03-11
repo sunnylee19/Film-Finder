@@ -43,22 +43,6 @@ class ResultsComponent extends React.Component {
         }
     }
 
-    // toggle between grid and layout
-
-    toggle = () => {
-        this.setState((prevState) => {
-            if (prevState.layout === 'table') {
-                return {
-                    layout: 'grid'
-                }
-            } else {
-                return {
-                    layout: 'table'
-                }
-            }
-        })
-    }
-
 // embed the HTML coding for the render.
     render() {
         return (
