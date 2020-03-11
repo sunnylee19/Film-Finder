@@ -22,7 +22,6 @@ class ResultsGridComponent extends React.Component {
             <div className="container">
 
                 <h2>Search Results</h2>
-                
                 <div className="row">
                     {!this.props.loading && this.props.movies.length === 0 &&
                     <h3>Sorry, no results found</h3>}

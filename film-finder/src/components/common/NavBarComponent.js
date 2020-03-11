@@ -9,7 +9,7 @@ export default props => {
     const history = useHistory();
     const [searchText, setSearchText] = useState(queryParams.get('s') || '');
 
-    const doSearch = () => history.push(query('/movies', {s: searchText}));
+    const doSearch = () => history.push(query('/movies', {s: searchText, page: 1}));
     const handleSearchTextChange = e => setSearchText(e.target.value);
     const handleSearchKeyPress = e => e.key === 'Enter' && doSearch();
     const handleSearchButtonPress = e => {

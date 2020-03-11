@@ -10,12 +10,13 @@ export const searchMoviesByTitle = async (searchQuery, page=1) => {
     if (!asJson.Search) return [];
 
     const movies = asJson.Search.map(item => Movie.parse(item));
+    const numPages = Math.ceil(asJson.totalResults / 10);
     let foundIds = [];
-    return movies.filter(item => {
+    return [movies.filter(item => {
         const result = !(foundIds.find(id => id === item.id));
         foundIds.push(item.id);
         return result;
-    });
+    }), numPages];
 }
 
 export const findMovieById = async (id) => {
