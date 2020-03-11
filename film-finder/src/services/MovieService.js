@@ -10,3 +10,10 @@ export const searchMoviesByTitle = async (searchQuery, page=1) => {
     if (!asJson.Search) return [];
     return asJson.Search.map(item => Movie.parse(item));
 }
+
+export const findMovieById = async (id) => {
+    const result = await query({i: id});
+    const asJson = await result.json();
+
+    return Movie.parse(asJson);
+}

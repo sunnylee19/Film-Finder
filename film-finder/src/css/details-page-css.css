@@ -1,0 +1,29 @@
+div.movie-genres {
+    font-weight: 500;
+
+}
+
+div.comment-name {
+    float: left;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+div.comment-date {
+    float: right;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+img.movie-poster {
+    max-width: 100%;
+    margin: 30px;
+}
+
+@media (max-width: 768px) {
+    img.movie-poster {
+        display: block;
+        margin: 15px auto 0 auto;
+
+    }
+}

@@ -38,7 +38,6 @@ class MovieComponent extends React.Component {
                                             <div className="badge badge-secondary mr-sm-1">
                                                 Comedy
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>

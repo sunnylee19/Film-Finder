@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {findMovieById} from '../../services/MovieService';
-import '../../css/details-page-css.css';
+import '../../css/details-page-css.css'
 import MovieCommentComponent from './MovieCommentComponent';
 import NavBarComponent from '../common/NavBarComponent';
 

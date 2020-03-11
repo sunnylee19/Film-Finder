@@ -1,5 +1,6 @@
 import React from "react"
 import ResultsGridComponent from "./ResultsGridComponent";
+import ResultsListComponent from "./ResultsListComponent";
 
 class ResultsSearchComponent extends React.Component {
 
@@ -12,12 +13,6 @@ class ResultsSearchComponent extends React.Component {
 
                 <input/>
                 <button>Search</button>
-
-                <ul>
-                    <li>
-                        <ResultsGridComponent/>
-                    </li>
-                </ul>
             </div>
         )
     }

@@ -1,0 +1,18 @@
+h3 {
+    border-style: double;
+    border-width: 2px;
+    border-color: blue;
+    color: blue;
+}
+
+img {
+    margin-left: 50px;
+    padding: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+card {
+    margin-left: 50px;
+    padding: 10px;
+}
