@@ -23,7 +23,7 @@ class ResultsGridComponent extends React.Component {
 
                 <h1>Movie Results: </h1>
 
-                <div class="row">
+                <div className="row">
                     {this.props.movies.map(movie => <ResultsGridItemComponent movie={movie} key={movie.id}/>)}
                 </div>
 

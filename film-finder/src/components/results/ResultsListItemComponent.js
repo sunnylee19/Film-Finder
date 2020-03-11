@@ -12,9 +12,9 @@ class ResultsListItemComponent extends React.Component {
             <div>
                 {/* <li className={`list-group-item ${this.state.active?'active':''}`}> */}
                 <li>
-                    <div class="row">
-                        <div class="col-12 row">
-                            <div class="col-12 wbdv-list-item-border">
+                    <div className="row">
+                        <div className="col-12 row">
+                            <div className="col-12 wbdv-list-item-border">
 
                                 <div className={"wbdv-movie-title"} id={"spiderman"}>
                                     <h3 className={"wbdv-movie-title-item"}>Spiderman: Far From Home (2019)</h3>
@@ -22,7 +22,7 @@ class ResultsListItemComponent extends React.Component {
 
                                 Best Stream: <a href="https://www.netflix.com/">Netflix</a>
 
-                            <div class="col-12 wbdv-table-view">
+                            <div className="col-12 wbdv-table-view">
                                 <button className={"wbdv-details-button btn btn-default"}>
                                     Details
                                 </button>
