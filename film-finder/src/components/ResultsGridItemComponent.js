@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default ({movie}) => (
-    <div class="col-xs-12 col-sm-6 col-md-3 card">
+    <div class="col-xs-12 col-sm-6 col-md-3 card d-flex justify-content-left">
         <img src={movie.posterUrl}/>
         <div className="wbdv-movie-title">
             {movie.title}

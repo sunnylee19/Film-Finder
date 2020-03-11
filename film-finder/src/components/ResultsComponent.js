@@ -7,6 +7,7 @@ import '../css/results-page-css.css'
 import ResultsGridComponent from "./ResultsGridComponent";
 import UserPageComponent from "./UserPageComponent";
 import ResultsListComponent from "./ResultsListComponent";
+import NavBarComponent from "./common/NavBarComponent";
 
 class ResultsComponent extends React.Component {
 
@@ -61,13 +62,9 @@ class ResultsComponent extends React.Component {
         return (
 
             <div>
-                <h1>Film Finder Search Results</h1>
+                <NavBarComponent/>
 
                 <br/>
-
-                <ResultsSearchComponent/>
-
-                Based on the query you have provided, here are the results:
 
                 {/* grid format for the components */}
 

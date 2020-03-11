@@ -19,10 +19,11 @@ wbdv-details-button {
     border-width: thin;
 }
 
-h1 {
-    font-family: Impact, serif;
+h2 {
+    font-family: sans-serif;
     border-color: white;
     text-decoration: none;
+    text-align: center;
 }
 
 li {
