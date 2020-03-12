@@ -1,16 +1,21 @@
 import rawQuery from '../common/query';
-import {OMDB_MOVIES_URL, API_KEY} from '../common/constants';
+import {TMDB_MOVIES_URL, API_KEY} from '../common/constants';
 import Movie from '../models/Movie';
 
-const query = (queryParams) => fetch(rawQuery(OMDB_MOVIES_URL, {...queryParams, apikey: API_KEY}));
+const query = (path, queryParams = {}) => fetch(rawQuery(TMDB_MOVIES_URL + path, {...queryParams, api_key: API_KEY}));
 
 export const searchMoviesByTitle = async (searchQuery, page=1) => {
-    const result = await query({s: searchQuery, type: 'movie', page});
+    const result = await query('/search/movie', {
+        query: searchQuery,
+        include_adult: false,
+        language: 'en-US',
+        page
+    });
     const asJson = await result.json();
-    if (!asJson.Search) return [];
+    if (!asJson.results) return [];
 
-    const movies = asJson.Search.map(item => Movie.parse(item));
-    const numPages = Math.ceil(asJson.totalResults / 10);
+    const movies = asJson.results.map(item => Movie.parseSearchResult(item));
+    const numPages = asJson.total_pages;
     let foundIds = [];
     return [movies.filter(item => {
         const result = !(foundIds.find(id => id === item.id));
@@ -20,8 +25,8 @@ export const searchMoviesByTitle = async (searchQuery, page=1) => {
 }
 
 export const findMovieById = async (id) => {
-    const result = await query({i: id});
-    const asJson = await result.json();
+    const [movie, credits] = await Promise.all([query(`/movie/${id}`), query(`/movie/${id}/credits`)]);
+    const [movieAsJSON, creditsAsJSON] = await Promise.all([movie.json(), credits.json()]);
 
-    return Movie.parse(asJson);
+    return Movie.parse(movieAsJSON, creditsAsJSON.crew);
 }

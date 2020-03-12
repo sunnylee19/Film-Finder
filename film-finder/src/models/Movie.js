@@ -1,8 +1,10 @@
+import moment from 'moment';
+import { GENRES } from '../common/constants';
+
 export default class Movie {
 
-    constructor({title, year, releaseDate, runtime, rated, genres, director, plot, posterUrl, id}) {
+    constructor({title, releaseDate, runtime, rated, genres, director, plot, posterUrl, id, imdbRating}) {
         this.title = title;
-        this.year = year;
         this.releaseDate = releaseDate;
         this.runtime = runtime;
         this.rated = rated;
@@ -11,32 +13,50 @@ export default class Movie {
         this.plot = plot;
         this.posterUrl = posterUrl;
         this.id = id;
+        this.imdbRating = imdbRating;
     }
 
     static parse({
-        Title,
-        Year,
-        Rated,
-        Released,
-        Runtime,
-        Genre = '',
-        Director,
-        Writer,
-        Plot,
-        Poster,
-        imdbID
+        id,
+        overview,
+        release_date,
+        genres,
+        poster_path,
+        vote_average,
+        title,
+        runtime
+    }, credits) {
+        const director = credits.find(item => item.job === 'Director');
+        return new Movie({
+            id,
+            title,
+            releaseDate: moment(release_date),
+            genres: genres.map(g => g.name),
+            plot: overview,
+            posterUrl: poster_path && `https://image.tmdb.org/t/p/w600_and_h900_bestv2${poster_path}`,
+            imdbRating: vote_average,
+            director: director && director.name || 'Unknown',
+            runtime
+        })
+    }
+
+    static parseSearchResult({
+        id,
+        title,
+        release_date,
+        genre_ids,
+        overview,
+        poster_path,
+        vote_average
     }) {
         return new Movie({
-            title: Title,
-            year: Year,
-            rated: Rated,
-            releaseDate: Released,
-            runtime: Runtime,
-            genres: Genre.split(',').map(genre => genre.trim()),
-            director: Director,
-            plot: Plot,
-            posterUrl: Poster,
-            id: imdbID
-        })
+            id,
+            title,
+            releaseDate: moment(release_date),
+            genres: genre_ids.map(id => GENRES[id]),
+            plot: overview,
+            posterUrl: poster_path && `https://image.tmdb.org/t/p/w600_and_h900_bestv2${poster_path}`,
+            imdbRating: vote_average
+        });
     }
 }
