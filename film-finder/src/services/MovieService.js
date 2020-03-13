@@ -7,7 +7,7 @@ const query = (queryParams) => fetch(rawQuery(OMDB_MOVIES_URL, {...queryParams, 
 export const searchMoviesByTitle = async (searchQuery, page=1) => {
     const result = await query({s: searchQuery, type: 'movie', page});
     const asJson = await result.json();
-    if (!asJson.Search) return [];
+    if (!asJson.Search) return [[], 0];
 
     const movies = asJson.Search.map(item => Movie.parse(item));
     const numPages = Math.ceil(asJson.totalResults / 10);
