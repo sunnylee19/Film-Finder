@@ -1,4 +1,4 @@
-export const OMDB_MOVIES_URL = 'http://www.omdbapi.com'
+export const OMDB_MOVIES_URL = 'https://www.omdbapi.com'
 // API key should not be hardcoded but oh well
 // Will fix this later, once we move API to server
 export const API_KEY = 'f8e8463b';
