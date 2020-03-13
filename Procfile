@@ -1,1 +1,1 @@
-web: cd film-finder && npm run build && ./node_modules/serve/bin/serve.js -s build
+web: cd film-finder && npm run build && ./node_modules/serve/bin/serve.js -s build -l 80
