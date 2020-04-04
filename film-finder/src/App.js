@@ -4,6 +4,7 @@ import HomePageComponent from "./components/home/HomePageComponent";
 import SignInPageComponent from "./components/login/SignInPageComponent";
 import UserPageComponent from "./components/user/UserPageComponent";
 import ResultsComponent from "./components/results/ResultsComponent";
+import RegistrationComponent from './components/register/RegistrationComponent';
 import MovieDetailsComponent from "./components/details/MovieDetailsComponent"
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -15,16 +16,11 @@ const App = () =>
         <Switch>
             <Route exact path="/" component={HomePageComponent}/>
             <Route exact path="/login" component={SignInPageComponent}/>
+            <Route exact path="/register" component={RegistrationComponent}/>
             <Route exact path="/user" component={UserPageComponent}/>
             <Route exact path="/movies" component={ResultsComponent}/>
             <Route exact path="/movies/:movieId" component={MovieDetailsComponent}/>
         </Switch>
     </Router>
-
-    //<SignInPageComponent/>;
-    //<HomePageComponent/>;
-    //<UserPageComponent/>;
-    //<ResultsComponent/>;
-    //<NavBarComponent/>;
 
 export default App;
