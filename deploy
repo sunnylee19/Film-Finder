@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+
+import sys
+import os
+
+if len(sys.argv) != 2:
+    print "Use either: ./deploy client or ./deploy api"
+
+_, target = sys.argv
+
+if target == 'client':
+    os.system('heroku git:remote -a cs5610-film-finder')
+    os.system('git subtree --prefix film-finder push heroku master')
+elif target == 'api':
+    os.system('heroku git:remote -a cs5610-film-finder-api')
+    os.system('git subtree --prefix wbdv-semester-project push heroku master')
+else:
+    print "Wrong target, use ./deploy client or ./deploy api"
