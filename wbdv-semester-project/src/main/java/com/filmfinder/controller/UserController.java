@@ -6,10 +6,11 @@ import com.filmfinder.model.User;
 import com.filmfinder.util.Cryptography;
 import com.filmfinder.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Optional;
 
 @RestController
@@ -44,14 +45,16 @@ public class UserController {
     }
 
     private static class Registration extends Login {
-        private Date DOB;
+        @DateTimeFormat(pattern="yyyy-MM-dd")
+        private LocalDate DOB;
         private String type;
 
-        public Date getDOB() {
+        @DateTimeFormat(pattern="yyyy-MM-dd")
+        public LocalDate getDOB() {
             return DOB;
         }
 
-        public void setDOB(Date DOB) {
+        public void setDOB(@DateTimeFormat(pattern="yyyy-MM-dd") LocalDate DOB) {
             this.DOB = DOB;
         }
 

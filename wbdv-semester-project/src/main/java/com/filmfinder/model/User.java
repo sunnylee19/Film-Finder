@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 public abstract class User {
@@ -17,7 +17,7 @@ public abstract class User {
     private String profilePicture;
     private String bio;
     private String phone;
-    private Date DOB;
+    private LocalDate DOB;
 
     public int getId() {
         return id;
@@ -69,11 +69,22 @@ public abstract class User {
         this.phone = phone;
     }
 
-    public Date getDOB() {
+    public LocalDate getDOB() {
         return DOB;
     }
 
-    public void setDOB(Date DOB) {
+    public void setDOB(LocalDate DOB) {
         this.DOB = DOB;
+    }
+
+    public boolean getOver18() {
+        if (this.DOB == null) return true;
+        LocalDate today = LocalDate.now();
+        int yearsBetween = today.getYear() - this.DOB.getYear();
+        if (today.getMonthValue() < this.DOB.getMonthValue() ||
+            (today.getDayOfMonth() < this.DOB.getDayOfMonth() && today.getMonthValue() == this.DOB.getMonthValue())) {
+            yearsBetween--;
+        }
+        return yearsBetween >= 18;
     }
 }
