@@ -139,12 +139,12 @@ public class UserController {
         Object attr = session.getAttribute(USER_KEY);
         if (attr == null) throw new RuntimeException("Not logged in");
         User user = (User)attr;
-        return this.userRepository.findById(user.getId()).get();
+        return this.userRepository.findUserProfile(user.getId()).get();
     }
 
     @GetMapping("/api/users/{userId}")
     public Optional<User> externalProfile(HttpSession session, @PathVariable int userId) {
-        return this.userRepository.findById(userId);
+        return this.userRepository.findUserProfile(userId);
     }
 
     @PutMapping("/api/users/user")
@@ -158,7 +158,7 @@ public class UserController {
         user.setPhone(updatedUser.getPhone());
         user.setProfilePicture(updatedUser.getProfilePicture());
         session.setAttribute(USER_KEY, user);
-        this.userRepository.save(user);
+        user = this.userRepository.save(user);
         return user;
     }
 

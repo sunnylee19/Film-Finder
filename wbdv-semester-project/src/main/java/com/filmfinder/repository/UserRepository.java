@@ -9,4 +9,7 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("select user from User user where user.email=?1 and user.password=?2")
     Optional<User> findUserByEmailAndPassword(String email, String encryptedPassword);
+
+    @Query("select user from User user left join fetch user.comments where user.id=?1")
+    Optional<User> findUserProfile(int userId);
 }
