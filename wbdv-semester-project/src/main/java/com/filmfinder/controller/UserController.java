@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(allowCredentials = "true", origins = {"http://localhost:3000", "https://cs5610-film-finder.herokuapp.com"})
 public class UserController {
     private static final String USER_KEY = "user";
     private static final String MEMBER = "MEMBER";
@@ -48,6 +48,24 @@ public class UserController {
         @DateTimeFormat(pattern="yyyy-MM-dd")
         private LocalDate DOB;
         private String type;
+        private String firstName;
+        private String lastName;
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
+        }
 
         @DateTimeFormat(pattern="yyyy-MM-dd")
         public LocalDate getDOB() {
@@ -102,6 +120,8 @@ public class UserController {
         newUser.setEmail(user.getEmail());
         newUser.setPassword(encryptedPassword);
         newUser.setDOB(user.getDOB());
+        newUser.setFirstName(user.getFirstName());
+        newUser.setLastName(user.getLastName());
 
         newUser = this.userRepository.save(newUser);
         session.setAttribute(USER_KEY, newUser);
