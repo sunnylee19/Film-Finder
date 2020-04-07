@@ -17,7 +17,26 @@ public abstract class User {
     private String profilePicture;
     private String bio;
     private String phone;
+    private String firstName;
+    private String lastName;
     private LocalDate DOB;
+
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public int getId() {
         return id;
