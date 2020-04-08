@@ -8,9 +8,9 @@ class MyUserDetailsComponent extends React.Component {
         return (
             <div>
                 <div className="container card user-box col-4 float-left" >
-                    <img className="user-photo" src="https://avatars0.githubusercontent.com/u/1682522?s=400&u=5616079a6e3baa83b765695adce7515ac1749114&v=4" alt="Card image cap"/>
+                    <img className="user-photo" src="https://www.ccs.neu.edu/home/ashesh/img/amit.jpg" alt="Card image cap"/>
                     <div className="card-body">
-                        <h5 className="card-title text-center">Jose</h5>
+                        <h5 className="card-title text-center">Amit</h5>
                         <form>
                             <div className="form-group row readonly">
                                 <label htmlFor="colFormLabelSm"

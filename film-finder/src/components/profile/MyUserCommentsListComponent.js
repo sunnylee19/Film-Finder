@@ -1,6 +1,7 @@
 import React from "react";
 import '../../css/my-user-comment-list-css.css';
 import CommentComponent from "../common/CommentComponent";
+import withUser from "../../common/withUser";
 
 class MyUserCommentsListComponent extends React.Component {
 
@@ -15,10 +16,9 @@ class MyUserCommentsListComponent extends React.Component {
                         </ul>
                     </div>
                 </div>
-
             </div>
         )
     }
 }
 
-export default MyUserCommentsListComponent;
+export default withUser(MyUserCommentsListComponent);

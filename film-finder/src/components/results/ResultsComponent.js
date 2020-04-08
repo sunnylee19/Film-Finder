@@ -25,10 +25,9 @@ class ResultsComponent extends React.Component {
     async searchMovies() {
         this.setState({loading: true});
         const queryParams = new URLSearchParams(this.props.location.search)
-        const searchTerm = queryParams.get('s');
+        const searchTerm = queryParams.get('s') || '';
         let page = parseInt(queryParams.get('page'));
         if (isNaN(page)) page = 1;
-        if (!searchTerm) return;
 
         const [movies, numPages] = await searchMoviesByTitle(searchTerm, page);
 
