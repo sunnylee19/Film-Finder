@@ -35,10 +35,6 @@ class MyUserDetailsComponent extends React.Component {
                         </form>
                     </div>
                 </div>
-
-                <div className="container card user-box float-left">
-                    <MyUserFollowingComponent/>
-                </div>
             </div>
         )
     }

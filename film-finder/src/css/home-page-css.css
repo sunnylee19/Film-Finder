@@ -9,3 +9,13 @@ h1 {
 .logo {
     font-family: Impact, serif;
 }
+
+.carousel .slide {
+    /*background-color: transparent !important;*/
+    background-color: darkblue;
+    max-height: 650px;
+}
+
+.card {
+    position: center;
+}

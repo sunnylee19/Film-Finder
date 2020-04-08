@@ -1,0 +1,16 @@
+ul.list-privacy li {
+    position: relative;
+    margin: auto;
+    width: 50%;
+    list-style-type: initial;
+}
+
+div.wbdv-privacy {
+    overflow: scroll;
+    background-color: #282c34;
+    color: white;
+}
+
+h1.text-center {
+    color: white;
+}

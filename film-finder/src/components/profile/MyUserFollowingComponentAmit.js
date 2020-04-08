@@ -2,27 +2,29 @@ import React from 'react';
 import withUser from "../../common/withUser";
 import '../../css/user-following-resize-css.css'
 import {Link} from "react-router-dom";
+import RatingComponent from "../rating/RatingComponent";
 
 class MyUserFollowingComponent extends React.Component {
 
     render () {
         return (
+
+
             <div>
-                User is following:
+                <div className="card">
+                    <h5 className="card-header">Following</h5>
+                    <div className="card-body">
+                        <ul>
+                            <li><RatingComponent/></li>
 
-                <div className="wbdv-card-container fa-border">
-
-                    <Link className="fa-border" to="#">Jose Annunziato</Link>
-
-                    <Link className="fa-border" href="#">User 123</Link>
-
-                    <Link className="fa-border" href="#">User 234</Link>
-
-                    <Link className="fa-border" href="#">User 345</Link>
-
+                        </ul>
+                    </div>
                 </div>
 
             </div>
+
+
+
         )
     }
 }

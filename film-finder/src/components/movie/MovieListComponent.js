@@ -5,12 +5,10 @@ class MovieListComponent extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="card-columns row">
-                   <MovieComponent/>
-                </div>
+            <div className="container">
+                <MovieComponent/>
             </div>
-        )
+        );
     }
 }
 

@@ -4,6 +4,7 @@ import MyUserRatingListComponent from "../profile/MyUserRatingListComponent";
 import MyUserCommentsListComponent from "../profile/MyUserCommentsListComponent";
 import MyUserDetailsComponent from "../profile/MyUserDetailsComponent";
 import NavBarComponent from "../../components/common/NavBarComponent";
+import MyUserFollowingComponent from "../profile/MyUserFollowingComponent";
 
 class UserPageComponent extends React.Component {
 
@@ -14,6 +15,7 @@ class UserPageComponent extends React.Component {
                 <MyUserDetailsComponent/>
                 <MyUserRatingListComponent/>
                 <MyUserCommentsListComponent/>
+                <MyUserFollowingComponent/>
             </div>
         )
     }
