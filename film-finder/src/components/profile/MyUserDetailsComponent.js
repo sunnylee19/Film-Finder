@@ -12,33 +12,43 @@ class MyUserDetailsComponent extends React.Component {
                     <div className="card-body">
                         <h5 className="card-title text-center">Jose</h5>
                         <form>
-                            <div className="form-group row readonly">
+                            <div className="form-group row">
                                 <label htmlFor="colFormLabelSm"
-                                       className="col-sm-2 col-form-label col-form-label-sm">
+                                       className="col-sm-4 col-form-label col-form-label-sm">
                                     Email
                                 </label>
-                                <div className="col-sm-10">
-                                    <input type="email" className="form-control form-control-sm"
-                                           id="colFormLabelSm" placeholder="reviewer@northeastern.edu"/>
+                                <div className="col-sm-8">
+                                    <input readOnly type="email" className="form-control form-control-sm"
+                                           id="colFormLabelSm" placeholder="reviewer@northeastern.edu"
+
+                                    />
                                 </div>
                             </div>
-                            <div className="form-group row readonly">
+                            <div className="form-group row">
                                 <label htmlFor="colFormLabelSm"
-                                       className="col-sm-2 col-form-label col-form-label-sm">
-                                    Tel.
+                                       className="col-sm-4 col-form-label col-form-label-sm">
+                                    Password
                                 </label>
-                                <div className="col-sm-10">
-                                    <input type="tel" className="form-control form-control-sm"
-                                           id="colFormLabelSm" placeholder="617-XXX-XXXX"/>
+                                <div className="col-sm-8">
+                                    <input readOnly type="password" className="form-control form-control-sm"
+                                           id="colFormLabelSm" placeholder=""/>
+                                </div>
+                            </div>
+                            <div className="form-group row">
+                                <label htmlFor="colFormLabelSm"
+                                       className="col-sm-4 col-form-label col-form-label-sm">
+                                    Birthday
+                                </label>
+                                <div className="col-sm-8">
+                                    <input readOnly type="date" className="form-control form-control-sm"
+                                           id="colFormLabelSm" placeholder="04/08/1998"/>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
 
-                <div className="container card user-box float-left">
-                    <MyUserFollowingComponent/>
-                </div>
+
             </div>
         )
     }
