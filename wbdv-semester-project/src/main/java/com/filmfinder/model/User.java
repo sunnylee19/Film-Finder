@@ -23,7 +23,6 @@ public abstract class User {
     private String lastName;
     private LocalDate DOB;
     @OneToMany(mappedBy="user")
-    @JsonBackReference
     private List<Comment> comments;
 
 
