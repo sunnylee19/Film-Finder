@@ -15,7 +15,6 @@ class MyUserCommentsListComponent extends React.Component {
                         </ul>
                     </div>
                 </div>
-
             </div>
         )
     }

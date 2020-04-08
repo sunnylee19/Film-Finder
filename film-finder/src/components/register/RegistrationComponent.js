@@ -4,6 +4,7 @@ import withUser from '../../common/withUser'
 import moment from 'moment';
 import { register } from '../../services/UserService';
 import { Redirect } from 'react-router';
+import NavBarComponent from "../common/NavBarComponent";
 
 class RegistrationComponent extends React.Component {
 
@@ -25,7 +26,6 @@ class RegistrationComponent extends React.Component {
 
     _handleChangeFirstName = event => this.setState({firstName: event.target.value});
     _handleChangeLastName = event => this.setState({lastName: event.target.value});
-    _handleChangeEmail = event => this.setState({email: event.target.value});
     _handleChangeEmail = event => this.setState({email: event.target.value});
     _handleChangePassword = event => this.setState({password: event.target.value});
     _handleChangeConfirmPassword = event => this.setState({confirmPassword: event.target.value});
@@ -58,6 +58,7 @@ class RegistrationComponent extends React.Component {
         return (
             <div>
                 <body className="text-center">
+                <NavBarComponent/>
                 <form className="form-signin" onSubmit={this._handleSubmit}>
                     <div className="h1 logo">
                         Film Finder
@@ -80,9 +81,6 @@ class RegistrationComponent extends React.Component {
                     <input type="confirm-password" name="inputPassword" className="form-control"
                            placeholder="Confirm password" required="" autoFocus=""
                            value={confirmPassword} onChange={this._handleChangeConfirmPassword}/>
-                    <label htmlFor="inputEmail" className="sr-only">
-                        Confirm Password
-                    </label>
                     <input type="text" name="inputFirstName" className="form-control"
                            placeholder="First name" required="" autoFocus=""
                            value={firstName} onChange={this._handleChangeFirstName}/>
