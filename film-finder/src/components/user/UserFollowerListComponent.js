@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../css/user-follower-list-component-css.css';
+import {Link} from 'react-router-dom';
 
 class UserFollowerListComponent extends React.Component {
 
@@ -13,7 +14,7 @@ class UserFollowerListComponent extends React.Component {
                                  src="https://inayatmiah.files.wordpress.com/2015/01/fbpic.jpg"
                                  alt="User image"/>
                             <div className="card-body text-center">
-                                Amit
+                                <Link to="/user/111">Amit</Link>
                             </div>
                         </div>
                     </li>
