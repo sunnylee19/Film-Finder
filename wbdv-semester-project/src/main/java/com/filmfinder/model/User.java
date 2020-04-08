@@ -1,10 +1,12 @@
 package com.filmfinder.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public abstract class User {
@@ -20,7 +22,18 @@ public abstract class User {
     private String firstName;
     private String lastName;
     private LocalDate DOB;
+    @OneToMany(mappedBy="user")
+    @JsonBackReference
+    private List<Comment> comments;
 
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     public String getFirstName() {
         return firstName;

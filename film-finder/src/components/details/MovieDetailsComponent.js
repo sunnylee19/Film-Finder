@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {findMovieById} from '../../services/MovieService';
 import '../../css/details-page-css.css'
-import MovieCommentComponent from './MovieCommentComponent';
 import NavBarComponent from '../common/NavBarComponent';
+import MovieCommentListComponent from './MovieCommentListComponent';
 
 export default ({match}) => {
     const [movie, setMovie] = useState(null);
@@ -54,36 +54,8 @@ export default ({match}) => {
                              <div className="card-body">
                                  <h4>Comments</h4>
                                  <hr/>
-
-                                 <MovieCommentComponent comment={{
-                                     user: {
-                                         name: 'Jose Annunziato'
-                                     },
-                                     postedOn: 'Yesterday at 11:45am',
-                                     body: 'This movie was really great. 10/10'
-                                 }}/>
-                                 <MovieCommentComponent comment={{
-                                     user: {
-                                         name: 'Jose Annunziato'
-                                     },
-                                     postedOn: 'Yesterday at 11:45am',
-                                     body: 'This movie was really great. 10/10'
-                                 }}/>
-                                 <MovieCommentComponent comment={{
-                                     user: {
-                                         name: 'Jose Annunziato'
-                                     },
-                                     postedOn: 'Yesterday at 11:45am',
-                                     body: 'This movie was really great. 10/10'
-                                 }}/>
-
-                                 <MovieCommentComponent comment={{
-                                     user: {
-                                         name: 'Amit Shesh'
-                                     },
-                                     postedOn: 'Yesterday at 11:45am',
-                                     body: 'This is a work of art! :-) 10/10'
-                                 }}/>
+                                  {movie &&
+                                  <MovieCommentListComponent id={movie.id}/>}
                              </div>
                          </div>
 
@@ -94,4 +66,4 @@ export default ({match}) => {
             }
         </div>
     );
-}
+};

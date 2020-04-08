@@ -40,13 +40,33 @@ class RegistrationComponent extends React.Component {
             this.setState({
                 error: 'Passwords do not match'
             });
+        } else if (firstName.trim() === '' || lastName.trim() === '') {
+            this.setState({
+                error: 'Please enter your name'
+            });
+        } else if (dob.isSameOrAfter(moment(moment().format('YYYY-MM-DD'), 'YYYY-MM-DD'))) {
+            this.setState({
+                error: 'Please select a valid birthday'
+            });
+        } else if (email.trim() === '') {
+            this.setState({
+                error: 'Please enter your email'
+            })
+        } else if (password.trim() === '' || password.length < 6) {
+            this.setState({
+                error: 'Please enter a valid password'
+            });
+        } else {
+            try {
+                const user = await register(email, password, firstName, lastName, dob, role);
+                this.props.setUser(user);
+            } catch (ex) {
+                this.setState({
+                    error: 'Email already in use'
+                });
+            }
         }
-        try {
-            const user = await register(email, password, firstName, lastName, dob, role);
-            this.props.setUser(user);
-        } catch (ex) {
-            console.log(ex);
-        }
+        
     };
 
     render() {
@@ -78,7 +98,7 @@ class RegistrationComponent extends React.Component {
                     <label htmlFor="inputEmail" className="sr-only">
                         Password
                     </label>
-                    <input type="confirm-password" name="inputPassword" className="form-control"
+                    <input type="password" name="inputPassword" className="form-control"
                            placeholder="Confirm password" required="" autoFocus=""
                            value={confirmPassword} onChange={this._handleChangeConfirmPassword}/>
                     <input type="text" name="inputFirstName" className="form-control"
