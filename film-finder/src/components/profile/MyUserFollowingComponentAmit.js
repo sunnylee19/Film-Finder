@@ -14,7 +14,7 @@ class MyUserFollowingComponent extends React.Component {
 
                     <Link className="fa-border" to="#">Amit Shesh</Link>
 
-                    <Link className="fa-border" to="100">Jose Annunziato</Link>
+                    <Link className="fa-border" to="user/100">Jose Annunziato</Link>
 
                     <Link className="fa-border" href="#">User 123</Link>
 
