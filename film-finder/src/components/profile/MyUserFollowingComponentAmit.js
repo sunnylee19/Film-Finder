@@ -12,7 +12,7 @@ class MyUserFollowingComponent extends React.Component {
 
                 <div className="wbdv-card-container fa-border">
 
-                <Link className="fa-border" to="111">Amit Shesh</Link>
+                    <Link className="fa-border" to="100">Jose Annunziato</Link>
 
                     <Link className="fa-border" href="#">User 123</Link>
 
