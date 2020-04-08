@@ -3,6 +3,7 @@ import '../../css/sign-in-css.css';
 import withUser from "../../common/withUser";
 import { login } from "../../services/UserService";
 import { Redirect } from "react-router";
+import NavBarComponent from "../common/NavBarComponent";
 
 class SignInPageComponent extends React.Component {
 
@@ -34,6 +35,7 @@ class SignInPageComponent extends React.Component {
         }
         return (
             <div className="text-center">
+                <NavBarComponent/>
                 <form className="form-signin" onSubmit={this.login}>
                     <div className="h1 logo">Film Finder</div>
                     <label htmlFor="inputEmail" className="sr-only">
