@@ -14,8 +14,7 @@ class MovieComponent extends React.Component {
             <div>
 
                 <Carousel>
-                <div className="col-md-6 card-body container">
-                    <div className="row flex-column-reverse flex-md-row">
+                    <div className="row">
                         <div className="col-md-4">
                             <div className="card">
                                 <div className="card-header">
@@ -120,7 +119,8 @@ class MovieComponent extends React.Component {
                                 </div>
                             </div>
                         </div>
-
+                    </div>
+                    <div className="row">
                         <div className="col-md-4">
                             <div className="card">
                                 <div className="card-header">
@@ -226,8 +226,6 @@ class MovieComponent extends React.Component {
                             </div>
                         </div>
                     </div>
-
-                </div>
                 </Carousel>
 
 
