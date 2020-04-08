@@ -25,7 +25,7 @@ export default ({match}) => {
                          <div className="card">
                              <div className="card-body">
                                  <h2 className="movie-title">
-                                     {movie.title} ({movie.year})
+                                     {movie.title} {movie.releaseDate.isValid() && '(' + movie.releaseDate.format('YYYY') + ')'}
                                  </h2>
                                  <hr/>
                                  <div className="movie-genres">
@@ -35,7 +35,7 @@ export default ({match}) => {
                                  {/* <hr/> */}
                                  Director: {movie.director}
                                  <br/>
-                                 Released: {movie.releaseDate}
+                                 {movie.releaseDate.isValid() && 'Released: ' + movie.releaseDate.format('MMMM Qo, YYYY')}
                                  <br/><br/>
                                  <h3>
                                      Summary
@@ -55,7 +55,7 @@ export default ({match}) => {
                                  <h4>Comments</h4>
                                  <hr/>
                                   {movie &&
-                                  <MovieCommentListComponent id={movie.id}/>}
+                                  <MovieCommentListComponent id={movie.imdbId}/>}
                              </div>
                          </div>
 
