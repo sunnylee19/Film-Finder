@@ -48,8 +48,6 @@ class MovieComponent extends React.Component {
                         </div>
                     </div>
 
-                </div>
-                <div>
                     <div className="col-md-4">
                         <div className="card">
                             <div className="card-header">
@@ -85,9 +83,6 @@ class MovieComponent extends React.Component {
                         </div>
                     </div>
 
-                </div>
-
-                    <div>
                         <div className="col-md-4">
                             <div className="card">
                                 <div className="card-header">
@@ -124,7 +119,7 @@ class MovieComponent extends React.Component {
                         </div>
                     </div>
 
-                    <div>
+                    <div className="row">
                         <div className="col-md-4">
                             <div className="card">
                                 <div className="card-header">
@@ -160,9 +155,7 @@ class MovieComponent extends React.Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div>
                         <div className="col-md-4">
                             <div className="card">
                                 <div className="card-header">
@@ -191,6 +184,38 @@ class MovieComponent extends React.Component {
                                             </div>
                                             <div className="badge badge-secondary mr-sm-1">
                                                 Fantasy
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="col-md-4">
+                            <div className="card">
+                                <div className="card-header">
+                                    <img className="card-img"
+                                         src="https://mypostercollection.com/wp-content/uploads/2018/06/Black-Panther-hd-printable-Poster-MyPosterCollection.com-official-poster.jpg"
+                                         alt="Movie poster not available"/>
+                                </div>
+                                <div className="card-body">
+                                    <div className="card-title">
+                                        <div>
+                                            <div className="h1">Black Panther</div>
+                                            <div className="h2">4.6/5</div>
+                                        </div>
+                                    </div>
+                                    <div className="container">
+
+                                        <div className="row">
+                                            <div className="badge badge-secondary mr-sm-1">
+                                                Action
+                                            </div>
+                                            <div className="badge badge-secondary mr-sm-1">
+                                                Superheroes
+                                            </div>
+                                            <div className="badge badge-secondary mr-sm-1">
+                                                Marvel
                                             </div>
                                         </div>
                                     </div>
