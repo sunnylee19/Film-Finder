@@ -9,3 +9,8 @@ h1 {
 .logo {
     font-family: Impact, serif;
 }
+
+.carousel .slide {
+    background-color: transparent !important;
+    max-height: 700px;
+}
