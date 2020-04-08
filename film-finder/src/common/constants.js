@@ -1,6 +1,6 @@
 export const OMDB_MOVIES_URL = 'https://www.omdbapi.com';
-// export const API_URL = 'https://cs5610-film-finder-api.herokuapp.com/api';
-export const API_URL = 'http://localhost:8080/api';
+export const API_URL = 'https://cs5610-film-finder-api.herokuapp.com/api';
+// export const API_URL = 'http://localhost:8080/api';
 // API key should not be hardcoded but oh well
 // Will fix this later, once we move API to server
 export const API_KEY = 'f8e8463b';
