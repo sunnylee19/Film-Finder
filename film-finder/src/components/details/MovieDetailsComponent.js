@@ -55,7 +55,7 @@ export default ({match}) => {
                                  <h4>Comments</h4>
                                  <hr/>
                                   {movie &&
-                                  <MovieCommentListComponent id={movie.id}/>}
+                                  <MovieCommentListComponent id={movie.imdbId}/>}
                              </div>
                          </div>
 
