@@ -4,3 +4,13 @@ li {
     width: 50%;
     list-style-type: initial;
 }
+
+div.wbdv-privacy {
+    overflow: scroll;
+    background-color: #282c34;
+    color: white;
+}
+
+h1 {
+    color: white;
+}
