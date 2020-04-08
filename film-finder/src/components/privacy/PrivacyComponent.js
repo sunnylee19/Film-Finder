@@ -52,7 +52,7 @@ class PrivacyComponent extends React.Component {
                         telephone number.</p>
                     <h2>How we use your information</h2>
                     <p>We use the information we collect in various ways, including to:</p>
-                    <ul>
+                    <ul className="list-privacy">
                         <li>Provide, operate, and maintain our webste</li>
                         <li>Improve, personalize, and expand our webste</li>
                         <li>Understand and analyze how you use our webste</li>

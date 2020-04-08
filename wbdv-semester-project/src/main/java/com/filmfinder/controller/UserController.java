@@ -199,6 +199,7 @@ public class UserController {
         if (updatedUser.getLastName() != null) user.setLastName(updatedUser.getLastName());
         if (updatedUser.getBio() != null) user.setBio(updatedUser.getBio());
         if (updatedUser.getPhone() != null) user.setPhone(updatedUser.getPhone());
+        if (updatedUser.getPassword() != null) user.setPassword(Cryptography.sha256(updatedUser.getPassword()));
         if (updatedUser.getProfilePicture() != null) user.setProfilePicture(updatedUser.getProfilePicture());
         session.setAttribute(USER_KEY, user);
         user = this.userRepository.save(user);
