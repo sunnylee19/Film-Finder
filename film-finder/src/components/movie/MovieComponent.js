@@ -167,45 +167,6 @@ class MovieComponent extends React.Component {
                             <div className="card">
                                 <div className="card-header">
                                     <img className="card-img"
-                                         src="https://mypostercollection.com/wp-content/uploads/2019/12/how-to-train-your-dragon-poster-11-e1575442993995.jpg"
-                                         alt="Movie poster not available"/>
-                                </div>
-                                <div className="card-body">
-                                    <div className="card-title">
-                                        <div>
-                                            <div className="h1">How To Train Your Dragon: Hidden
-                                                World
-                                            </div>
-                                            <div className="h2">4.8/5</div>
-                                        </div>
-                                    </div>
-                                    <div className="container">
-
-                                        <div className="row">
-                                            <div className="badge badge-secondary mr-sm-1">
-                                                Action
-                                            </div>
-                                            <div className="badge badge-secondary mr-sm-1">
-                                                Pixar
-                                            </div>
-                                            <div className="badge badge-secondary mr-sm-1">
-                                                CGI
-                                            </div>
-                                            <div className="badge badge-secondary mr-sm-1">
-                                                Adventure
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div className="col-md-4">
-                            <div className="card">
-                                <div className="card-header">
-                                    <img className="card-img"
                                          src="https://mypostercollection.com/wp-content/uploads/2019/08/sonic-movie-1-692x1024.jpg"
                                          alt="Movie poster not available"/>
                                 </div>
