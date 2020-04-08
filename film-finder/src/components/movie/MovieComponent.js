@@ -231,6 +231,8 @@ class MovieComponent extends React.Component {
                 </Carousel>
 
 
+
+
             </div>
         )
     }
