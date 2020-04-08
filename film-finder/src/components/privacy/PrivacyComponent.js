@@ -5,9 +5,7 @@ class PrivacyComponent extends React.Component {
     render() {
         return (
             <div>
-                <h2>Privacy Policy: </h2>
-
-                To be determined.
+                <h2>Privacy Policy: To Be Determined.</h2>
             </div>
         )
     }

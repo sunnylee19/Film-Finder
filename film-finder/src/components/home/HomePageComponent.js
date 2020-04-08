@@ -1,6 +1,7 @@
 import React from "react";
 import '../../css/home-page-css.css';
 import RecommendationComponent from "../../components/recommendation/RecommendationComponent";
+import PrivacyComponent from "../../privacy/PrivacyComponent";
 import query from '../../common/query'
 import NavBarComponent from "../common/NavBarComponent";
 
@@ -34,6 +35,7 @@ class HomePageComponent extends React.Component {
             <div>
                 <NavBarComponent/>
                 <RecommendationComponent/>
+                <PrivacyComponent/>
             </div>
         )
     }
