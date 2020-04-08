@@ -88,6 +88,36 @@ public class UserController {
         }
     }
 
+    private static class Update extends Registration {
+        private String bio;
+        private String phone;
+        private String profilePicture;
+
+        public String getBio() {
+            return bio;
+        }
+
+        public void setBio(String bio) {
+            this.bio = bio;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
+
+        public String getProfilePicture() {
+            return profilePicture;
+        }
+
+        public void setProfilePicture(String profilePicture) {
+            this.profilePicture = profilePicture;
+        }
+    }
+
     @PostMapping("/api/login")
     public User login(@RequestBody Login user,
                       HttpSession session) {
@@ -139,24 +169,37 @@ public class UserController {
         Object attr = session.getAttribute(USER_KEY);
         if (attr == null) throw new RuntimeException("Not logged in");
         User user = (User)attr;
-        return this.userRepository.findUserProfile(user.getId()).get();
+
+        Optional<User> u = this.userRepository.findUserProfile(user.getId());
+        if (!u.isPresent()) return null;
+        u.get().getComments().forEach(item -> item.setUser(null));
+        return u.get();
     }
 
     @GetMapping("/api/users/{userId}")
     public Optional<User> externalProfile(HttpSession session, @PathVariable int userId) {
-        return this.userRepository.findUserProfile(userId);
+        Optional<User> u = this.userRepository.findUserProfile(userId);
+        if (!u.isPresent()) {
+            return u;
+        }
+        u.get().getComments().forEach(item -> item.setUser(null));
+        return u;
     }
 
     @PutMapping("/api/users/user")
-    public User updateProfile(HttpSession session, @RequestBody User updatedUser) {
+    public User updateProfile(HttpSession session, @RequestBody Update updatedUser) {
         Object attr = session.getAttribute(USER_KEY);
         if (attr == null) throw new RuntimeException("Not logged in");
         User user = (User)attr;
 
-        user.setBio(updatedUser.getBio());
-        user.setDOB(updatedUser.getDOB());
-        user.setPhone(updatedUser.getPhone());
-        user.setProfilePicture(updatedUser.getProfilePicture());
+        user = this.userRepository.findById(user.getId()).get();
+
+        if (updatedUser.getEmail() != null) user.setEmail(updatedUser.getEmail());
+        if (updatedUser.getFirstName() != null) user.setFirstName(updatedUser.getFirstName());
+        if (updatedUser.getLastName() != null) user.setLastName(updatedUser.getLastName());
+        if (updatedUser.getBio() != null) user.setBio(updatedUser.getBio());
+        if (updatedUser.getPhone() != null) user.setPhone(updatedUser.getPhone());
+        if (updatedUser.getProfilePicture() != null) user.setProfilePicture(updatedUser.getProfilePicture());
         session.setAttribute(USER_KEY, user);
         user = this.userRepository.save(user);
         return user;
