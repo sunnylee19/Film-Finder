@@ -15,7 +15,7 @@ class MovieComponent extends React.Component {
             <div className="col-md-4" key={movie.id}>
                 <div className="card">
                     <div className="card-header">
-                        <img className="card-img"
+                        <img className="card-img img-fluid"
                                 src={movie.posterUrl}
                                 alt="Movie poster not available"/>
                     </div>
