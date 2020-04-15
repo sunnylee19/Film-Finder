@@ -1,7 +1,10 @@
 import React from 'react'
+
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
+
 import "../../css/registration-page-css.css"
 import withUser from '../../common/withUser'
-import moment from 'moment';
 import { register } from '../../services/UserService';
 import { Redirect } from 'react-router';
 import NavBarComponent from "../common/NavBarComponent";
@@ -20,7 +23,7 @@ class RegistrationComponent extends React.Component {
         password: '',
         confirmPassword: '',
         role: 'MEMBER',
-        dob: moment(),
+        dob: '',
         error: null
     };
 
@@ -30,7 +33,7 @@ class RegistrationComponent extends React.Component {
     _handleChangePassword = event => this.setState({password: event.target.value});
     _handleChangeConfirmPassword = event => this.setState({confirmPassword: event.target.value});
     _handleChangeRole = event => this.setState({role: event.target.value});
-    _handleChangeDob = (event) => this.setState({dob: moment(event.target.value)});
+    _handleChangeDob = (event) => this.setState({dob: event.target.value});
 
     _handleSubmit = async (event) => {
         event.preventDefault();
@@ -38,35 +41,35 @@ class RegistrationComponent extends React.Component {
         const {firstName, lastName, email, password, confirmPassword, role, dob} = this.state;
         if (password !== confirmPassword) {
             this.setState({
-                error: 'Passwords do not match'
-            });
+                              error: 'Passwords do not match'
+                          });
         } else if (firstName.trim() === '' || lastName.trim() === '') {
             this.setState({
-                error: 'Please enter your name'
-            });
-        } else if (dob.isSameOrAfter(moment(moment().format('YYYY-MM-DD'), 'YYYY-MM-DD'))) {
+                              error: 'Please enter your name'
+                          });
+        } else if (dob.trim() === '') {
             this.setState({
-                error: 'Please select a valid birthday'
-            });
+                              error: 'Please select a valid birthday'
+                          });
         } else if (email.trim() === '') {
             this.setState({
-                error: 'Please enter your email'
-            })
+                              error: 'Please enter your email'
+                          })
         } else if (password.trim() === '' || password.length < 6) {
             this.setState({
-                error: 'Please enter a valid password'
-            });
+                              error: 'Please enter a valid password'
+                          });
         } else {
             try {
                 const user = await register(email, password, firstName, lastName, dob, role);
                 this.props.setUser(user);
             } catch (ex) {
                 this.setState({
-                    error: 'Email already in use'
-                });
+                                  error: 'Email already in use'
+                              });
             }
         }
-        
+
     };
 
     render() {
@@ -113,18 +116,28 @@ class RegistrationComponent extends React.Component {
                     <label htmlFor="inputLastName" className="sr-only">
                         Last Name
                     </label>
-                    <input className="form-control" name="dob"
-                           type="date"
-                           value={dob.format('YYYY-MM-DD')} onChange={this._handleChangeDob}></input>
-                    
+                    {/*
+                        <input className="form-control" name="dob"
+                               type="date"
+                               value={dob.format('YYYY-MM-DD')}
+                               onChange={this._handleChangeDob}>
+                        </input>
+
+                       */
+
+                    }
+                    {
+                        <DayPickerInput onChange={this._handleChangeDob}/>
+                    }
+
                     <div className="form-group">
-                    <select name="inputRole" value={role} onChange={this._handleChangeRole} className="form-control">
-                        <option value="ADMIN">Admin</option>
-                        <option value="MEMBER">Member</option>
-                    </select>
-                    <label htmlFor="inputRole" className="sr-only">
-                        Role
-                    </label>
+                        <select name="inputRole" value={role} onChange={this._handleChangeRole} className="form-control">
+                            <option value="ADMIN">Admin</option>
+                            <option value="MEMBER">Member</option>
+                        </select>
+                        <label htmlFor="inputRole" className="sr-only">
+                            Role
+                        </label>
                     </div>
                     <br/>
 
