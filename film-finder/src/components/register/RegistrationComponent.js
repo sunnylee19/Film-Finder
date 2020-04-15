@@ -1,10 +1,12 @@
 import React from 'react'
+import "../../css/registration-page-css.css"
 
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 
-import "../../css/registration-page-css.css"
+
 import withUser from '../../common/withUser'
+import moment from 'moment';
 import { register } from '../../services/UserService';
 import { Redirect } from 'react-router';
 import NavBarComponent from "../common/NavBarComponent";
@@ -23,7 +25,7 @@ class RegistrationComponent extends React.Component {
         password: '',
         confirmPassword: '',
         role: 'MEMBER',
-        dob: '',
+        dob: moment(),
         error: null
     };
 
@@ -33,10 +35,12 @@ class RegistrationComponent extends React.Component {
     _handleChangePassword = event => this.setState({password: event.target.value});
     _handleChangeConfirmPassword = event => this.setState({confirmPassword: event.target.value});
     _handleChangeRole = event => this.setState({role: event.target.value});
-    _handleChangeDob = (event) => this.setState({dob: event.target.value});
+    _handleChangeDob = day => this.setState({dob: moment(day, 'YYYY-M-D')});
 
     _handleSubmit = async (event) => {
         event.preventDefault();
+
+
 
         const {firstName, lastName, email, password, confirmPassword, role, dob} = this.state;
         if (password !== confirmPassword) {
@@ -47,7 +51,7 @@ class RegistrationComponent extends React.Component {
             this.setState({
                               error: 'Please enter your name'
                           });
-        } else if (dob.trim() === '') {
+        } else if (dob.isSameOrAfter(moment(moment().format('YYYY-MM-DD'), 'YYYY-MM-DD'))) {
             this.setState({
                               error: 'Please select a valid birthday'
                           });
@@ -61,7 +65,7 @@ class RegistrationComponent extends React.Component {
                           });
         } else {
             try {
-                const user = await register(email, password, firstName, lastName, dob, role);
+                const user = await register(email, password, firstName, lastName, moment(dob, 'YYYY-M-D'), role);
                 this.props.setUser(user);
             } catch (ex) {
                 this.setState({
@@ -117,17 +121,14 @@ class RegistrationComponent extends React.Component {
                         Last Name
                     </label>
                     {/*
-                        <input className="form-control" name="dob"
-                               type="date"
-                               value={dob.format('YYYY-MM-DD')}
-                               onChange={this._handleChangeDob}>
-                        </input>
+                    <input className="form-control" name="dob"
+                           type="date"
+                           value={dob.format('YYYY-MM-DD')} onChange={this._handleChangeDob}>
 
-                       */
-
-                    }
+                    </input>
+                    */}
                     {
-                        <DayPickerInput onChange={this._handleChangeDob}/>
+                        <DayPickerInput onDayChange={this._handleChangeDob}/>
                     }
 
                     <div className="form-group">
