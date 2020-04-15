@@ -1,7 +1,26 @@
 import React from 'react';
 import "../../css/privacy-policy-css.css"
 
+/* Source (w3 schools): https://www.w3schools.com/howto/howto_js_read_more.asp */
+
 class PrivacyComponent extends React.Component {
+
+    /* function for read more */
+    readMore = () => {
+        var ellipsis = document.getElementById("ellipsis")
+        var moreText = document.getElementById('more')
+        var buttonText = document.getElementById('myButton')
+
+        if (ellipsis.style.display === "none") {
+            ellipsis.style.display = "inline";
+            buttonText.innerHTML = "Read More"
+            moreText.style.display = "none";
+        } else {
+            ellipsis.style.display = "none";
+            buttonText.innerHTML = "Read Less"
+            moreText.style.display = "inline"
+        }
+    }
 
     render() {
         return (
@@ -18,6 +37,8 @@ class PrivacyComponent extends React.Component {
                         document contains types of information that is collected and recorded by
                         Film
                         Finder and how we use it.</p>
+
+                    <span id="ellipsis"> ... </span><span id="more">
 
                     <br/>
 
@@ -182,7 +203,11 @@ class PrivacyComponent extends React.Component {
                         immediately
                         and we will do our best efforts to promptly remove such information from our
                         records.</p>
+                </span>
                 </div>
+
+                <button onClick={this.readMore} id="myButton">Read More</button>
+
             </div>
         )
     }
