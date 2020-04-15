@@ -1,6 +1,6 @@
 import { API_URL } from "../common/constants";
 import { get, post, put } from "../common/query";
-
+import Movie from '../models/Movie';
 
 export const login = async (email, password) => {
     return await post(API_URL + '/login', {
@@ -29,7 +29,7 @@ export const getProfileForUser = async (userId) => {
 
 export const getMyRecommendations = async () => {
     const json = await get(API_URL + `/users/user/recommendations`);
-    return json.map(item => item.id.movieId);
+    return json.map(item => Movie.parseSearchResult(item.movie));
 }
 
 export const getMyProfile = async () => {

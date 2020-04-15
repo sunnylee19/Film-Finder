@@ -13,8 +13,8 @@ class RecommendationComponent extends React.Component {
 
     getRecs = async () => {
         if (this.props.user !== null) {
-            const [recommendedMovies, popular] = await Promise.all([getMyRecommendations(), getPopularMovies()]);
-            this.setState({movies: await Promise.all(recommendedMovies.slice(0, 21).map(id => findMovieById(id))), popular});
+            const [movies, popular] = await Promise.all([getMyRecommendations(), getPopularMovies()]);
+            this.setState({movies: movies.slice(0, 21), popular});
         } else {
             this.setState({popular: await getPopularMovies()});
         }

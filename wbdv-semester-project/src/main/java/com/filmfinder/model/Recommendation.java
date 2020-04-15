@@ -1,9 +1,6 @@
 package com.filmfinder.model;
 
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -12,6 +9,16 @@ public class Recommendation {
     @EmbeddedId
     private Recommendation.RecommendationId id;
     private int value;
+    @Embedded
+    private MovieRecommendation movie;
+
+    public MovieRecommendation getMovie() {
+        return movie;
+    }
+
+    public void setMovie(MovieRecommendation movie) {
+        this.movie = movie;
+    }
 
     public RecommendationId getId() {
         return id;

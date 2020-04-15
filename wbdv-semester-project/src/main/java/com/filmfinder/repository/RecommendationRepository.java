@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface RecommendationRepository extends JpaRepository<Recommendation, Recommendation.RecommendationId> {
 
-    @Query("select rec from Recommendation rec where rec.value > 0 and rec.id.user = ?1 order by rec.value desc")
+    @Query("select distinct rec from Recommendation rec left join fetch rec.movie.genre_ids where rec.value > 0 and rec.id.user = ?1 order by rec.value desc")
     public List<Recommendation> getRecommendedMoviesForUser(User u);
 }

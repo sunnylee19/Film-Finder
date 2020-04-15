@@ -1,5 +1,6 @@
 package com.filmfinder.controller;
 
+import com.filmfinder.model.MovieRecommendation;
 import com.filmfinder.model.Rating;
 import com.filmfinder.model.Recommendation;
 import com.filmfinder.model.User;
@@ -10,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -66,22 +65,26 @@ public class RatingController {
         rating.setId(id);
         rating.setValue(val);
 
-        List<Recommendation.RecommendationId> recIds = this.movieService.getRecommendationsForMovie(movieId)
+        List<MovieRecommendation> recommendations = this.movieService.getRecommendationsForMovie(movieId);
+        List<Recommendation.RecommendationId> recIds = recommendations
                 .stream()
-                .map((String recId) -> {
+                .map((MovieRecommendation recommendation) -> {
                     Recommendation.RecommendationId newId = new Recommendation.RecommendationId();
-                    newId.setMovieId(recId);
+                    newId.setMovieId(Integer.toString(recommendation.getId()));
                     newId.setUser(u);
                     return newId;
                 }).collect(Collectors.toList());
         List<Recommendation> recs = this.recommendationRepository.findAllById(recIds);
         Set<Recommendation.RecommendationId> idSet = recs.stream().map(item -> item.getId()).collect(Collectors.toSet());
+        Map<String, MovieRecommendation> idToRec = new HashMap<>();
+        recommendations.forEach(rec -> idToRec.put(Integer.toString(rec.getId()), rec));
         recs.forEach(item -> item.setValue(item.getValue() + diff));
 
         this.recommendationRepository.saveAll(recIds.stream().filter(item -> !idSet.contains(item)).map(item -> {
             Recommendation rec = new Recommendation();
             rec.setId(item);
             rec.setValue(diff);
+            rec.setMovie(idToRec.get(item.getMovieId()));
             return rec;
         }).collect(Collectors.toList()));
         this.recommendationRepository.saveAll(recs);
