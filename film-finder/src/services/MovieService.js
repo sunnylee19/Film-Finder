@@ -1,4 +1,4 @@
-import rawQuery from '../common/query';
+import rawQuery, { get } from '../common/query';
 import {TMDB_MOVIES_URL, API_KEY} from '../common/constants';
 import Movie from '../models/Movie';
 
@@ -29,4 +29,10 @@ export const findMovieById = async (id) => {
     const [movieAsJSON, creditsAsJSON] = await Promise.all([movie.json(), credits.json()]);
 
     return Movie.parse(movieAsJSON, creditsAsJSON.crew);
+}
+
+export const getPopularMovies = async (id) => {
+    const resp = await query('/movie/popular');
+    const json = await resp.json();
+    return json.results.map(item => Movie.parseSearchResult(item));
 }

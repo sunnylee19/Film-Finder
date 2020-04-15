@@ -24,7 +24,16 @@ public abstract class User {
     private LocalDate DOB;
     @OneToMany(mappedBy="user")
     private List<Comment> comments;
+    @OneToMany(mappedBy="id.user")
+    private List<Rating> ratings;
 
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
+    }
 
     public List<Comment> getComments() {
         return comments;

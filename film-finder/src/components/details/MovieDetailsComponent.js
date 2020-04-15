@@ -3,6 +3,7 @@ import {findMovieById} from '../../services/MovieService';
 import '../../css/details-page-css.css'
 import NavBarComponent from '../common/NavBarComponent';
 import MovieCommentListComponent from './MovieCommentListComponent';
+import MovieRatingComponent from './MovieRatingComponent';
 
 export default ({match}) => {
     const [movie, setMovie] = useState(null);
@@ -12,6 +13,7 @@ export default ({match}) => {
             setMovie(movie);
         })();
     }, [match.params.movieId]);
+
     return (
         <div>
             <NavBarComponent/>
@@ -30,6 +32,9 @@ export default ({match}) => {
                                  <hr/>
                                  <div className="movie-genres">
                                      {movie.genres.join(', ')}
+                                 </div>
+                                 <div className="movie-rating">
+                                     <MovieRatingComponent movieId={match.params.movieId}/>
                                  </div>
                                  <br/>
                                  {/* <hr/> */}
@@ -55,7 +60,7 @@ export default ({match}) => {
                                  <h4>Comments</h4>
                                  <hr/>
                                   {movie &&
-                                  <MovieCommentListComponent id={movie.imdbId}/>}
+                                  <MovieCommentListComponent id={movie.id}/>}
                              </div>
                          </div>
 

@@ -23,8 +23,14 @@ export const register = async (email, password, firstName, lastName, dob, role) 
 export const logout = async () => await post(API_URL + '/logout');
 
 export const getProfileForUser = async (userId) => {
+    
     return await get(API_URL + `/users/${userId}`)
 };
+
+export const getMyRecommendations = async () => {
+    const json = await get(API_URL + `/users/user/recommendations`);
+    return json.map(item => item.id.movieId);
+}
 
 export const getMyProfile = async () => {
     return await get(API_URL + '/users/user');

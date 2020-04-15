@@ -6,7 +6,7 @@ class MovieListComponent extends React.Component {
     render() {
         return (
             <div className="container">
-                <MovieComponent/>
+                <MovieComponent movies={this.props.movies}/>
             </div>
         );
     }
