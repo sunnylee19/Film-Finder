@@ -5,6 +5,7 @@ import query from '../../common/query';
 import '../../../src/css/nav-bar-component.css'
 import withUser from '../../common/withUser';
 import { logout } from '../../services/UserService';
+import PrivacyModalComponent from "../privacy/PrivacyModalComponent";
 
 export default withUser(props => {
     const queryParams = new URLSearchParams(useLocation().search);
@@ -42,6 +43,9 @@ export default withUser(props => {
                     </button>
                 </form>
             </div>
+
+            <PrivacyModalComponent/>
+
             {!user &&
             <Link className="nav-link" to="/login">
                 Log In
