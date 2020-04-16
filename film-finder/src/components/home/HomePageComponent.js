@@ -1,7 +1,6 @@
 import React from "react";
 import '../../css/home-page-css.css';
 import RecommendationComponent from "../../components/recommendation/RecommendationComponent";
-import PrivacyComponent from "../../components/privacy/PrivacyComponent";
 import query from '../../common/query'
 import NavBarComponent from "../common/NavBarComponent";
 
@@ -30,13 +29,15 @@ class HomePageComponent extends React.Component {
         this._doSearch();
     }
 
+
+
     render() {
         return (
             <div>
                 <NavBarComponent/>
                 <RecommendationComponent/>
-                <PrivacyComponent/>
             </div>
+
         )
     }
 }
