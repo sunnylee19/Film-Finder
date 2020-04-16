@@ -128,7 +128,11 @@ class RegistrationComponent extends React.Component {
                     </input>
                     */}
                     {
-                        <DayPickerInput onDayChange={this._handleChangeDob}/>
+                        <div className="form-control">
+                            <i className="fas fa-birthday-cake"></i>
+                        <DayPickerInput placeholder="YYYY-M-D"
+                                        onDayChange={this._handleChangeDob}/>
+                        </div>
                     }
 
                     <div className="form-group">
