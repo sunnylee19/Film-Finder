@@ -206,7 +206,7 @@ class PrivacyComponent extends React.Component {
                 </span>
                 </div>
 
-                <button class="btn btn-block btn-dark" onClick={this.readMore} id="myButton">Read More</button>
+                <button className="btn btn-block btn-dark" onClick={this.readMore} id="myButton">Read More</button>
 
             </div>
         )
