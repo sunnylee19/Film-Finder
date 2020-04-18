@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { Modal,  Button } from 'react-bootstrap';
+
+import { Modal} from 'react-bootstrap';
 import PrivacyPolicyContentComponent from "./PrivacyPolicyContentComponent";
 
-function PrivacyModalComponent() {
+function PrivacyLinkComponent() {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -12,25 +13,29 @@ function PrivacyModalComponent() {
 
     return (
         <div>
-            <Button variant="light" onClick={handleShow}>
-                Privacy Policy
-            </Button>
+            <p>
+                I agree to the
+            <button type="button" className="btn btn-link"
+                    onClick={handleShow}>
+                privacy policy
+            </button>
+                of Film Finder.
+            </p>
 
             <Modal centered show={show} onHide={handleClose}>
-                <Modal.Header>
+                <Modal.Header >
                     <Modal.Title>Privacy Policy</Modal.Title>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close"
+                            onClick={handleClose}>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </Modal.Header>
                 <Modal.Body>
                     <PrivacyPolicyContentComponent/>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="success" onClick={handleClose}>
-                        I understand and agree to the privacy policy
-                    </Button>
-                </Modal.Footer>
             </Modal>
         </div>
     );
 }
 
-export default PrivacyModalComponent
+export default PrivacyLinkComponent
