@@ -4,12 +4,12 @@ import "../../css/registration-page-css.css"
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 
-
 import withUser from '../../common/withUser'
 import moment from 'moment';
 import { register } from '../../services/UserService';
 import { Redirect } from 'react-router';
 import NavBarComponent from "../common/NavBarComponent";
+import PrivacyLinkComponent from "../privacy/PrivacyLinkComponent";
 
 class RegistrationComponent extends React.Component {
 
@@ -99,6 +99,7 @@ class RegistrationComponent extends React.Component {
                     <label htmlFor="inputEmail" className="sr-only">
                         Email
                     </label>
+
                     <input type="password" name="inputPassword" className="form-control"
                            placeholder="Password" required="" autoFocus=""
                            value={password} onChange={this._handleChangePassword}/>
@@ -120,35 +121,36 @@ class RegistrationComponent extends React.Component {
                     <label htmlFor="inputLastName" className="sr-only">
                         Last Name
                     </label>
-                    {/*
-                    <input className="form-control" name="dob"
-                           type="date"
-                           value={dob.format('YYYY-MM-DD')} onChange={this._handleChangeDob}>
 
-                    </input>
-                    */}
-                    {
-                        <div className="form-control">
+                        <div className="form-group form-control">
                             <i className="fas fa-birthday-cake"></i>
                         <DayPickerInput placeholder="YYYY-M-D"
                                         onDayChange={this._handleChangeDob}/>
                         </div>
-                    }
+
 
                     <div className="form-group">
                         <select name="inputRole" value={role} onChange={this._handleChangeRole} className="form-control">
-                            <option value="ADMIN">Admin</option>
                             <option value="MEMBER">Member</option>
+                            <option value="ADMIN">Admin</option>
                         </select>
                         <label htmlFor="inputRole" className="sr-only">
                             Role
                         </label>
                     </div>
-                    <br/>
 
-                    <button className="btn btn-md btn-dark btn-block" onClick={this._handleSubmit}
+                    <div className="form-group form-check">
+                        <input type="checkbox" className="form-check-input" id="exampleCheck1">
+                        </input>
+                        <label className="form-check-label" htmlFor="exampleCheck1">
+                            <PrivacyLinkComponent/>
+                        </label>
+                    </div>
+
+                    <button className="form-group btn btn-md btn-dark btn-block" onClick={this._handleSubmit}
                             type="submit">Register
                     </button>
+
                     {error && <span className="text-danger">{error}</span>}
                 </form>
                 </body>
