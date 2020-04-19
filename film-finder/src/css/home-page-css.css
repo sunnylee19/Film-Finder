@@ -19,3 +19,10 @@ h1 {
 .card {
     position: center;
 }
+
+img.wbdv-recommendation-poster {
+    margin: 10px 0;
+    object-fit: contain;
+    height: 350px;
+    max-width: 100%;
+}

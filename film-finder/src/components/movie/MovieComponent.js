@@ -14,17 +14,15 @@ class MovieComponent extends React.Component {
         return (
             <div className="col-md-4" key={movie.id}>
                 <div className="card">
-                    <div className="card-header">
-                        <img className="card-img img-fluid"
-                                src={movie.posterUrl}
-                                alt="Movie poster not available"/>
-                    </div>
+                    <img className="wbdv-recommendation-poster"
+                                    src={movie.posterUrl}
+                                    alt="Movie poster not available"/>
                     <div className="card-body">
                         <div className="card-title">
-                            <div>
-                                <div className="h1">
+                            <div className="wbdv-movie-title">
+                                <h4>
                                     <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-                                </div>
+                                </h4>
                             </div>
                         </div>
                         <div className="container">

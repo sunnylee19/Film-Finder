@@ -42,12 +42,12 @@ class RecommendationComponent extends React.Component {
                 </div>
                 }
                 
-                {movies &&
+                {movies && movies.length > 0 &&
                 <div className="text-center mt-5">
                     <h2>Your Recommendations</h2>
                 </div>
                 }
-                {movies &&
+                {movies && movies.length > 0 &&
                 <div>
                     <MovieListComponent movies={movies}/>
                 </div>
