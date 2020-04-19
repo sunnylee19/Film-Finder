@@ -4,7 +4,6 @@ import UserRatingListComponent from "../profile/UserRatingListComponent";
 import UserCommentsListComponent from "../profile/UserCommentsListComponent";
 import UserDetailsComponent from "../profile/UserDetailsComponent";
 import NavBarComponent from "../common/NavBarComponent";
-import UserFollowingComponent from "../profile/UserFollowingComponent";
 import withUser from "../../common/withUser";
 import { getMyProfile } from "../../services/UserService";
 import { Redirect } from "react-router";
@@ -34,7 +33,6 @@ const MyUserPageComponent = (props) => {
                 <div className="col-12 col-md-7 float-right">
                     <UserRatingListComponent ratings={localUser.ratings}/>
                     <UserCommentsListComponent comments={localUser.comments}/>
-                    <UserFollowingComponent/>
                 </div>
             </div>
         </div>
