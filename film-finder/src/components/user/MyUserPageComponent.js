@@ -13,17 +13,13 @@ const MyUserPageComponent = (props) => {
     const {user, setUser} = props;
     const [localUser, setLocalUser] = useState(null);
 
-    const setBoth = (val) => {
-        setUser(val);
-        setLocalUser(val);
-    };
     useEffect(() => {
         (async () => {
             if (!user) return;
             const me = await getMyProfile();
             setLocalUser(me);
         })();
-    }, [user && user.id]);
+    }, [user]);
     if (!user) {
         return <Redirect to="/"/>;
     }
@@ -33,7 +29,7 @@ const MyUserPageComponent = (props) => {
             <NavBarComponent/>
             <div className="row">
                 <div className="col-12 col-md-5 float-left">
-                    <UserDetailsComponent user={localUser} setUser={setBoth} editable={true}/>
+                    <UserDetailsComponent user={localUser} setUser={setUser} editable={true}/>
                 </div>
                 <div className="col-12 col-md-7 float-right">
                     <UserRatingListComponent ratings={localUser.ratings}/>
