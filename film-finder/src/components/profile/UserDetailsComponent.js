@@ -159,7 +159,7 @@ class UserDetailsComponent extends React.Component {
                             }
 
                         </form>
-                        {!state.isEditing && user &&
+                        {this.props.editable && !state.isEditing && user &&
                         <button className="btn btn-secondary btn-block"
                                 onClick={() => {
                                     this.updateForm({

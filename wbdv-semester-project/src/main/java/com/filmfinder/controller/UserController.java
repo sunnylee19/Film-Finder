@@ -155,6 +155,7 @@ public class UserController {
 
         newUser = this.userRepository.save(newUser);
         session.setAttribute(USER_KEY, newUser);
+
         return newUser;
     }
 
@@ -184,6 +185,7 @@ public class UserController {
             return u;
         }
         u.get().getComments().forEach(item -> item.setUser(null));
+        u.get().getRatings().forEach(item -> item.getId().setUser(null));
         return u;
     }
 

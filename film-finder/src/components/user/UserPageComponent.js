@@ -23,7 +23,7 @@ export default (props) => {
             <NavBarComponent/>
             <div className="row">
                 <div className="col-12 col-md-5 float-left">
-                    <UserDetailsComponent user={user} setUser={setUser}/>
+                    <UserDetailsComponent user={user} setUser={setUser} editable={false}/>
                 </div>
                 <div className="col-12 col-md-7 float-right">
                     <UserRatingListComponent ratings={user.ratings}/>
