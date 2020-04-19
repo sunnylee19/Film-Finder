@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../css/sign-in-css.css';
-import { updateMyProfile } from '../../services/UserService';
+import {updateMyProfile} from '../../services/UserService';
 
 class UserDetailsComponent extends React.Component {
 
@@ -17,8 +17,7 @@ class UserDetailsComponent extends React.Component {
     };
     doEditProfile = async (event) => {
         event.preventDefault();
-        const updatedUser = {
-        };
+        const updatedUser = {};
         if (this.state.updatedFirstName !== '') {
             updatedUser.firstName = this.state.updatedFirstName;
         }
@@ -34,109 +33,110 @@ class UserDetailsComponent extends React.Component {
         const newUser = await updateMyProfile(updatedUser);
         this.props.setUser(newUser);
         this.setState({
-            isEditing: false
-        });
+                          isEditing: false
+                      });
     };
-    
+
     render() {
         const {user} = this.props;
         let state = this.state;
 
         return (
             <div>
-                <div className="card" >
-                    <img className="user-photo" src="https://avatars0.githubusercontent.com/u/1682522?s=400&u=5616079a6e3baa83b765695adce7515ac1749114&v=4" alt="Card image cap"/>
-                <div className="container card user-box col-4 float-left" >
+                <div className="container card user-box col-4 float-left">
                     <img className="user-photo"
                          src="https://inayatmiah.files.wordpress.com/2015/01/fbpic.jpg"
                          alt="Card image cap"/>
                     <div className="card-body">
 
                         {user &&
-                        <h5 className="card-title text-center">
-                            {user.firstName}
-                        </h5>
+                         <h5 className="card-title text-center">
+                             {user.firstName}
+                         </h5>
                         }
 
 
                         <form>
                             {user &&
-                            <div className="form-group row">
-                                <label htmlFor="colFormLabelSm"
+                             <div className="form-group row">
+                                 <label htmlFor="colFormLabelSm"
                                         className="col-sm-4 col-form-label col-form-label-sm">
-                                    First Name
-                                </label>
-                                <div className="col-sm-8">
-                                    {!state.isEditing &&
-                                    <input readOnly type="text" className="form-control form-control-sm"
-                                            id="colFormLabelSm" placeholder={user.firstName}/>
-                                    }
-                                    {state.isEditing &&
-                                    <input type="text" className="form-control form-control-sm"
-                                            id="colFormLabelSm" placeholder={user.firstName}
-                                            onChange={(e) => {
-                                                this.updateForm({
-                                                                    updatedFirstName: e.target.value
-                                                                });
-                                            }}/>}
+                                     First Name
+                                 </label>
+                                 <div className="col-sm-8">
+                                     {!state.isEditing &&
+                                      <input readOnly type="text"
+                                             className="form-control form-control-sm"
+                                             id="colFormLabelSm" placeholder={user.firstName}/>
+                                     }
+                                     {state.isEditing &&
+                                      <input type="text" className="form-control form-control-sm"
+                                             id="colFormLabelSm" placeholder={user.firstName}
+                                             onChange={(e) => {
+                                                 this.updateForm({
+                                                                     updatedFirstName: e.target.value
+                                                                 });
+                                             }}/>}
 
-                                </div>
-                            </div>
+                                 </div>
+                             </div>
                             }
                             {user &&
-                            <div className="form-group row">
-                                <label htmlFor="colFormLabelSm"
+                             <div className="form-group row">
+                                 <label htmlFor="colFormLabelSm"
                                         className="col-sm-4 col-form-label col-form-label-sm">
-                                    Last Name
-                                </label>
-                                <div className="col-sm-8">
-                                    {!state.isEditing &&
-                                    <input readOnly type="text" className="form-control form-control-sm"
-                                            id="colFormLabelSm" placeholder={user.lastName}/>}
-                                    {state.isEditing &&
-                                    <input type="text" className="form-control form-control-sm"
-                                            id="colFormLabelSm" placeholder={user.lastName}
-                                            onChange={(e) => {
-                                                this.updateForm({
-                                                                    updatedLastName: e.target.value
-                                                                });
-                                            }}/>}
+                                     Last Name
+                                 </label>
+                                 <div className="col-sm-8">
+                                     {!state.isEditing &&
+                                      <input readOnly type="text"
+                                             className="form-control form-control-sm"
+                                             id="colFormLabelSm" placeholder={user.lastName}/>}
+                                     {state.isEditing &&
+                                      <input type="text" className="form-control form-control-sm"
+                                             id="colFormLabelSm" placeholder={user.lastName}
+                                             onChange={(e) => {
+                                                 this.updateForm({
+                                                                     updatedLastName: e.target.value
+                                                                 });
+                                             }}/>}
 
-                                </div>
-                            </div>
+                                 </div>
+                             </div>
                             }
 
                             {user &&
-                            <div className="form-group row">
-                                <label htmlFor="colFormLabelSm"
+                             <div className="form-group row">
+                                 <label htmlFor="colFormLabelSm"
                                         className="col-sm-4 col-form-label col-form-label-sm">
-                                    Email
+                                     Email
 
-                                </label>
+                                 </label>
 
-                                <div className="col-sm-8">
-                                    {!state.isEditing &&
-                                    <input readOnly type="email" className="form-control form-control-sm"
-                                            id="colFormLabelSm" placeholder={user.email}/>}
-                                    {state.isEditing &&
-                                    <input type="email" className="form-control form-control-sm"
-                                            id="colFormLabelSm" placeholder={user.email}
-                                            onChange={(e) => {
-                                                this.updateForm({
-                                                                    updatedEmail: e.target.value
-                                                                });
-                                            }}/>}
-                                </div>
-                            </div>
+                                 <div className="col-sm-8">
+                                     {!state.isEditing &&
+                                      <input readOnly type="email"
+                                             className="form-control form-control-sm"
+                                             id="colFormLabelSm" placeholder={user.email}/>}
+                                     {state.isEditing &&
+                                      <input type="email" className="form-control form-control-sm"
+                                             id="colFormLabelSm" placeholder={user.email}
+                                             onChange={(e) => {
+                                                 this.updateForm({
+                                                                     updatedEmail: e.target.value
+                                                                 });
+                                             }}/>}
+                                 </div>
+                             </div>
                             }
                             {state.isEditing && user &&
-                            <div className="form-group row">
-                                <label htmlFor="colFormLabelSm"
+                             <div className="form-group row">
+                                 <label htmlFor="colFormLabelSm"
                                         className="col-sm-4 col-form-label col-form-label-sm">
-                                    Password
-                                </label>
-                                <div className="col-sm-8">
-                                    <input type="password"
+                                     Password
+                                 </label>
+                                 <div className="col-sm-8">
+                                     <input type="password"
                                             className="form-control form-control-sm"
                                             id="colFormLabelSm" placeholder={user.password}
                                             onChange={(e) => {
@@ -144,60 +144,59 @@ class UserDetailsComponent extends React.Component {
                                                                     updatedPassword: e.target.value
                                                                 });
                                             }}/>
-                                </div>
-                            </div>
+                                 </div>
+                             </div>
                             }
 
                             {user &&
-                            <div className="form-group row">
-                                <label htmlFor="colFormLabelSm"
+                             <div className="form-group row">
+                                 <label htmlFor="colFormLabelSm"
                                         className="col-sm-4 col-form-label col-form-label-sm">
-                                    Birthday
-                                </label>
-                                <div className="col-sm-8">
-                                    <input readOnly type="text"
+                                     Birthday
+                                 </label>
+                                 <div className="col-sm-8">
+                                     <input readOnly type="text"
                                             className="form-control form-control-sm"
                                             id="colFormLabelSm" placeholder={user.dob}/>
-                                </div>
-                            </div>
+                                 </div>
+                             </div>
                             }
 
                             {user &&
-                            <div className="form-group row">
-                                <label htmlFor="colFormLabelSm"
-                                       className="col-sm-4 col-form-label col-form-label-sm">
-                                    Status
-                                </label>
-                                <div className="col-sm-8">
-                                    <input readOnly type="text"
-                                           className = "form-control form-control-sm"
-                                           id="colFormLabelSm" placeholder={"User"}/>
-                                </div>
-                            </div>}
+                             <div className="form-group row">
+                                 <label htmlFor="colFormLabelSm"
+                                        className="col-sm-4 col-form-label col-form-label-sm">
+                                     Status
+                                 </label>
+                                 <div className="col-sm-8">
+                                     <input readOnly type="text"
+                                            className="form-control form-control-sm"
+                                            id="colFormLabelSm" placeholder={"User"}/>
+                                 </div>
+                             </div>}
 
                         </form>
                         {this.props.editable && !state.isEditing && user &&
-                        <button className="btn btn-secondary btn-block"
-                                onClick={() => {
-                                    this.updateForm({
-                                                        isEditing: true
-                                                    })
-                                }}
+                         <button className="btn btn-secondary btn-block"
+                                 onClick={() => {
+                                     this.updateForm({
+                                                         isEditing: true
+                                                     })
+                                 }}
 
-                            >
-                            EDIT PROFILE
-                        </button>
+                         >
+                             EDIT PROFILE
+                         </button>
                         }
                         {state.isEditing && user &&
-                        <button className="btn btn-secondary btn-block"
-                                onClick={this.doEditProfile}
-                            >
-                            UPDATE PROFILE
-                        </button>
+                         <button className="btn btn-secondary btn-block"
+                                 onClick={this.doEditProfile}
+                         >
+                             UPDATE PROFILE
+                         </button>
                         }
 
                     </div>
-                </div>
                 </div>
             </div>
         );
