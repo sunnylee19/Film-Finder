@@ -46,6 +46,10 @@ class UserDetailsComponent extends React.Component {
             <div>
                 <div className="card" >
                     <img className="user-photo" src="https://avatars0.githubusercontent.com/u/1682522?s=400&u=5616079a6e3baa83b765695adce7515ac1749114&v=4" alt="Card image cap"/>
+                <div className="container card user-box col-4 float-left" >
+                    <img className="user-photo"
+                         src="https://inayatmiah.files.wordpress.com/2015/01/fbpic.jpg"
+                         alt="Card image cap"/>
                     <div className="card-body">
 
                         {user &&
@@ -158,6 +162,19 @@ class UserDetailsComponent extends React.Component {
                             </div>
                             }
 
+                            {user &&
+                            <div className="form-group row">
+                                <label htmlFor="colFormLabelSm"
+                                       className="col-sm-4 col-form-label col-form-label-sm">
+                                    Status
+                                </label>
+                                <div className="col-sm-8">
+                                    <input readOnly type="text"
+                                           className = "form-control form-control-sm"
+                                           id="colFormLabelSm" placeholder={"User"}/>
+                                </div>
+                            </div>}
+
                         </form>
                         {this.props.editable && !state.isEditing && user &&
                         <button className="btn btn-secondary btn-block"
@@ -181,8 +198,7 @@ class UserDetailsComponent extends React.Component {
 
                     </div>
                 </div>
-
-
+                </div>
             </div>
         );
     }
