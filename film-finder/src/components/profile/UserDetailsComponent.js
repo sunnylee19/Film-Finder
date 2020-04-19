@@ -43,7 +43,7 @@ class UserDetailsComponent extends React.Component {
 
         return (
             <div>
-                <div className="container card user-box col-4 float-left">
+                <div className="card user-box">
                     <img className="user-photo"
                          src="https://inayatmiah.files.wordpress.com/2015/01/fbpic.jpg"
                          alt="Card image cap"/>
