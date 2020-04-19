@@ -1,3 +1,7 @@
+/* Credit from W3 Schools:
+ https://www.w3schools.com/howto/howto_css_tooltip.asp
+ */
+
 .tooltip {
     background-color: rgba(0,0,0,0.5);
     position: relative;
@@ -5,7 +9,19 @@
     border: solid;
 }
 
-.tooltiptext:hover {
+.tooltip .tooltiptext {
     color: white;
     visibility: hidden;
+    background-color: #555;
+    text-align: center;
+    border-radius: 5px;
+    padding: 2px 0;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }
