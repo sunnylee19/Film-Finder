@@ -20,10 +20,6 @@ class UserFollowerListComponent extends React.Component {
                     </li>
                 </ul>
             </div>
-
-
-
-
         )
     }
 }

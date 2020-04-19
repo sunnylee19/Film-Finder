@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../../css/sign-in-css.css';
-import withUser from '../../common/withUser';
 import { updateMyProfile } from '../../services/UserService';
 
-class MyUserDetailsComponent extends React.Component {
+class UserDetailsComponent extends React.Component {
 
     state = {
         isEditing: false,
@@ -45,7 +44,7 @@ class MyUserDetailsComponent extends React.Component {
 
         return (
             <div>
-                <div className="container card user-box col-4 float-left" >
+                <div className="card" >
                     <img className="user-photo" src="https://avatars0.githubusercontent.com/u/1682522?s=400&u=5616079a6e3baa83b765695adce7515ac1749114&v=4" alt="Card image cap"/>
                     <div className="card-body">
 
@@ -189,4 +188,4 @@ class MyUserDetailsComponent extends React.Component {
     }
 }
 
-export default withUser(MyUserDetailsComponent);
+export default UserDetailsComponent;

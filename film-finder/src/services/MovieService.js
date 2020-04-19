@@ -28,6 +28,7 @@ export const findMovieById = async (id) => {
     const [movie, credits] = await Promise.all([query(`/movie/${id}`), query(`/movie/${id}/credits`)]);
     const [movieAsJSON, creditsAsJSON] = await Promise.all([movie.json(), credits.json()]);
 
+    if (!movieAsJSON || !creditsAsJSON || !creditsAsJSON.crew) return null;
     return Movie.parse(movieAsJSON, creditsAsJSON.crew);
 }
 

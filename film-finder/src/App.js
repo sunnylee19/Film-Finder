@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import HomePageComponent from "./components/home/HomePageComponent";
 import SignInPageComponent from "./components/login/SignInPageComponent";
+import MyUserPageComponent from "./components/user/MyUserPageComponent";
 import UserPageComponent from "./components/user/UserPageComponent";
-import UserPageComponentAmit from "./components/user/UserPageComponentAmit";
 import ResultsComponent from "./components/results/ResultsComponent";
 import RegistrationComponent from './components/register/RegistrationComponent';
 import MovieDetailsComponent from "./components/details/MovieDetailsComponent"
@@ -34,11 +34,10 @@ const App = () =>
                 <Route exact path="/" component={HomePageComponent}/>
                 <Route exact path="/login" component={SignInPageComponent}/>
                 <Route exact path="/register" component={RegistrationComponent}/>
-                <Route exact path="/user" component={UserPageComponent}/>
+                <Route exact path="/user" component={MyUserPageComponent}/>
+                <Route exact path="/user/:userId" component={UserPageComponent}/>
                 <Route exact path="/movies" component={ResultsComponent}/>
                 <Route exact path="/movies/:movieId" component={MovieDetailsComponent}/>
-                <Route exact path="/user/111" component={UserPageComponentAmit}/>
-                <Route exact path="/user/100" component={UserPageComponent}/>
             </Switch>
         </Router>
     </Provider>

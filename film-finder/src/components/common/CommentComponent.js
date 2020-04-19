@@ -1,42 +1,22 @@
-import React from 'react';
-import {postComment} from "../../services/CommentService";
+import React, { useEffect, useState } from 'react';
+import { findMovieById } from '../../services/MovieService';
+import {Link} from 'react-router-dom';
 
-class CommentComponent extends React.Component {
 
-    /* To Do: figure out this part to add user followers */
-    addComment = () => {
-        postComment()
-    }
-
-    render() {
-        return (
-            <div>
-                <ul>
-                    <li>
-                        <textarea>Zootopia- "This is a really good movie, must watch!"</textarea>
-                    </li>
-
-                </ul>
-
-                <br/>
-
-                <h1>Comments Posted By User: </h1>
-
-                <ul>
-                    <li>Star Wars- "Very enjoyable, definitely nice movie after semester ends."</li>
-                </ul>
-
-                <button class="btn btn-group-sm btn-success" onClick={this.addComment}>
-                    Add Comment
-                </button>
-
-                <button class="btn btn-group-sm btn-danger" onClick={this.removeComment}>
-                    Delete Comment
-                </button>
-
-            </div>
-        )
-    }
-}
-
-export default CommentComponent;
+export default (props) => {
+    const comment = props.comment;
+    const [movie, setMovie] = useState(null);
+    useEffect(() => {
+        const movieId = comment.movieId;
+        (async () => setMovie(await findMovieById(movieId)))();
+    }, [comment.movieId])
+    return (
+        movie &&
+        <li className="list-group-item">
+            <h5>
+                <Link to={`/movies/${movie.id}#c${comment.id}`} className="movie-link">{movie.title}</Link>
+            </h5>
+            {comment.body}
+        </li>
+    );
+};
