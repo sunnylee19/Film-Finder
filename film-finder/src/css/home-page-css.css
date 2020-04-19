@@ -9,3 +9,20 @@ h1 {
 .logo {
     font-family: Impact, serif;
 }
+
+.carousel .slide {
+    /*background-color: transparent !important;*/
+    background-color: darkblue;
+    max-height: 650px;
+}
+
+.card {
+    position: center;
+}
+
+img.wbdv-recommendation-poster {
+    margin: 10px 0;
+    object-fit: contain;
+    height: 350px;
+    max-width: 100%;
+}

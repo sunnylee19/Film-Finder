@@ -17,7 +17,7 @@ export default ({numPages, page}) => {
         );
     }
     return (
-        <ul class="pagination">
+        <ul className="pagination">
             {pageComponents}
         </ul>
     );

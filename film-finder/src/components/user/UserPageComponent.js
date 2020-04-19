@@ -1,22 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import '../../css/user-page-css.css';
-import MyUserRatingListComponent from "../profile/MyUserRatingListComponent";
-import MyUserCommentsListComponent from "../profile/MyUserCommentsListComponent";
-import MyUserDetailsComponent from "../profile/MyUserDetailsComponent";
-import NavBarComponent from "../../components/common/NavBarComponent";
+import UserRatingListComponent from "../profile/UserRatingListComponent";
+import UserCommentsListComponent from "../profile/UserCommentsListComponent";
+import UserDetailsComponent from "../profile/UserDetailsComponent";
+import NavBarComponent from "../common/NavBarComponent";
+import { getProfileForUser } from "../../services/UserService";
 
-class UserPageComponent extends React.Component {
 
-    render() {
-        return (
-            <div>
-                <NavBarComponent/>
-                <MyUserDetailsComponent/>
-                <MyUserRatingListComponent/>
-                <MyUserCommentsListComponent/>
+export default (props) => {
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+        const userId = props.match.params.userId;
+
+        (async () => {
+            setUser(await getProfileForUser(userId));
+        })();
+    }, [props.match.params.userId]);
+    return (
+        user &&
+        <div>
+            <NavBarComponent/>
+            <div className="row">
+                <div className="col-12 col-md-5 float-left">
+                    <UserDetailsComponent user={user} setUser={setUser} editable={false}/>
+                </div>
+                <div className="col-12 col-md-7 float-right">
+                    <UserRatingListComponent ratings={user.ratings}/>
+                    <UserCommentsListComponent comments={user.comments}/>
+                </div>
             </div>
-        )
-    }
-}
-
-export default UserPageComponent;
+        </div>
+    );
+};

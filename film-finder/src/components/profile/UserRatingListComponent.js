@@ -1,16 +1,19 @@
 import React from "react";
 import '../../css/my-user-rating-list-css.css';
 import RatingComponent from "../rating/RatingComponent";
-class MyUserRatingListComponent extends React.Component {
+
+class UserRatingListComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="w-100">
                 <div className="card">
-                    <h5 className="card-header">My Ratings</h5>
+                    <h5 className="card-header">Ratings</h5>
                     <div className="card-body">
                         <ul>
-                            <li><RatingComponent/></li>
+                            {this.props.ratings.map(rating =>
+                                <RatingComponent key={rating.id.movieId} rating={rating}/>
+                            )}
                         </ul>
                     </div>
                 </div>
@@ -20,4 +23,7 @@ class MyUserRatingListComponent extends React.Component {
     }
 }
 
-export default MyUserRatingListComponent;
+export default UserRatingListComponent;
+
+
+

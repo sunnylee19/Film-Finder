@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {findMovieById} from '../../services/MovieService';
 import '../../css/details-page-css.css'
-import MovieCommentComponent from './MovieCommentComponent';
 import NavBarComponent from '../common/NavBarComponent';
+import MovieCommentListComponent from './MovieCommentListComponent';
+import MovieRatingComponent from './MovieRatingComponent';
 
 export default ({match}) => {
     const [movie, setMovie] = useState(null);
@@ -12,6 +13,7 @@ export default ({match}) => {
             setMovie(movie);
         })();
     }, [match.params.movieId]);
+
     return (
         <div>
             <NavBarComponent/>
@@ -25,17 +27,20 @@ export default ({match}) => {
                          <div className="card">
                              <div className="card-body">
                                  <h2 className="movie-title">
-                                     {movie.title} ({movie.year})
+                                     {movie.title} {movie.releaseDate.isValid() && '(' + movie.releaseDate.format('YYYY') + ')'}
                                  </h2>
                                  <hr/>
                                  <div className="movie-genres">
                                      {movie.genres.join(', ')}
                                  </div>
+                                 <div className="movie-rating">
+                                     <MovieRatingComponent movieId={match.params.movieId}/>
+                                 </div>
                                  <br/>
                                  {/* <hr/> */}
                                  Director: {movie.director}
                                  <br/>
-                                 Released: {movie.releaseDate}
+                                 {movie.releaseDate.isValid() && 'Released: ' + movie.releaseDate.format('MMMM Qo, YYYY')}
                                  <br/><br/>
                                  <h3>
                                      Summary
@@ -54,36 +59,8 @@ export default ({match}) => {
                              <div className="card-body">
                                  <h4>Comments</h4>
                                  <hr/>
-
-                                 <MovieCommentComponent comment={{
-                                     user: {
-                                         name: 'Jose Annunziato'
-                                     },
-                                     postedOn: 'Yesterday at 11:45am',
-                                     body: 'This movie was really great. 10/10'
-                                 }}/>
-                                 <MovieCommentComponent comment={{
-                                     user: {
-                                         name: 'Jose Annunziato'
-                                     },
-                                     postedOn: 'Yesterday at 11:45am',
-                                     body: 'This movie was really great. 10/10'
-                                 }}/>
-                                 <MovieCommentComponent comment={{
-                                     user: {
-                                         name: 'Jose Annunziato'
-                                     },
-                                     postedOn: 'Yesterday at 11:45am',
-                                     body: 'This movie was really great. 10/10'
-                                 }}/>
-
-                                 <MovieCommentComponent comment={{
-                                     user: {
-                                         name: 'Amit Shesh'
-                                     },
-                                     postedOn: 'Yesterday at 11:45am',
-                                     body: 'This is a work of art! :-) 10/10'
-                                 }}/>
+                                  {movie &&
+                                  <MovieCommentListComponent id={movie.id}/>}
                              </div>
                          </div>
 
@@ -94,4 +71,4 @@ export default ({match}) => {
             }
         </div>
     );
-}
+};
