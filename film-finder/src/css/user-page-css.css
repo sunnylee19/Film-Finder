@@ -8,10 +8,11 @@
 }
 
 .user-photo{
-
+    padding: 30px;
     margin-top: 30px;
+    position: relative;
+    margin-right: auto;
     width: 400px;
-
 }
 
 .dashboard{

@@ -12,8 +12,8 @@ class MovieComponent extends React.Component {
 
     _renderMovie = (movie) => {
         return (
-            <div className="col-md-4" key={movie.id}>
-                <div className="card">
+            <div className="col-md-4 d-flex align" key={movie.id}>
+                <div className="card d-flex align">
                     <div className="card-header">
                         <img className="card-img img-fluid"
                                 src={movie.posterUrl}
@@ -22,7 +22,7 @@ class MovieComponent extends React.Component {
                     <div className="card-body">
                         <div className="card-title">
                             <div>
-                                <div className="h1">
+                                <div className="h3">
                                     <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
                                 </div>
                             </div>
