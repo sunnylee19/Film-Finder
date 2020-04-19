@@ -12,6 +12,7 @@ export default withUser(({id, user}) => {
         setComments(await findCommentsForMovie(id));
         setLoading(false);
     });
+
     const handlePostComment = async () => {
         if (commentText.trim() === '') return;
         await postComment(id, {
@@ -21,7 +22,7 @@ export default withUser(({id, user}) => {
     };
 
     const handleFlagComment = async () => {
-        comments.filter()
+        console.log("Comment flagged.");
     }
 
 
