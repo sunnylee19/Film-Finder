@@ -2,7 +2,8 @@ import { ACTION_TYPES } from "../common/constants";
 
 
 const initialState = {
-    user: null
+    user: null,
+    loading: true
 };
 
 export default (state = initialState, action) => {
@@ -10,7 +11,8 @@ export default (state = initialState, action) => {
         case ACTION_TYPES.USER_SET:
             return {
                 ...state,
-                user: action.user
+                user: action.user,
+                loading: false
             };
         default:
             return state;

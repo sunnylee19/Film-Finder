@@ -9,7 +9,7 @@ import { getMyProfile } from "../../services/UserService";
 import { Redirect } from "react-router";
 
 const MyUserPageComponent = (props) => {
-    const {user, setUser} = props;
+    const {user, setUser, userLoading} = props;
     const [localUser, setLocalUser] = useState(null);
 
     useEffect(() => {
@@ -20,7 +20,8 @@ const MyUserPageComponent = (props) => {
         })();
     }, [user]);
     if (!user) {
-        return <Redirect to="/"/>;
+        if (!userLoading) return <Redirect to="/"/>;
+        return null;
     }
     return (
         localUser &&
