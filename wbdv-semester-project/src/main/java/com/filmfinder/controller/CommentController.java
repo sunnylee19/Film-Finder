@@ -15,7 +15,6 @@ public class CommentController {
     private static final String USER_KEY = "user";
     private boolean flagged;
     private boolean endorsed;
-    private boolean deleted;
 
     public boolean isEndorsed() {
         return endorsed;
@@ -31,14 +30,6 @@ public class CommentController {
 
     public void setFlagged(boolean flagged) {
         this.flagged = flagged;
-    }
-
-    public boolean isDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
     }
 
     @Autowired
@@ -61,5 +52,29 @@ public class CommentController {
         comment.setUser(user);
         comment.setMovieId(movieId);
         return this.commentRepository.save(comment);
+    }
+
+    @PutMapping("api/comments/{commentId}")
+    public Comment updateComment(@PathVariable String movieId,
+                                 @RequestBody Comment comment,
+                                 HttpSession session) {
+        Object obj = session.getAttribute(USER_KEY);
+        if (obj == null) {
+            throw new RuntimeException("Not logged in, cannot update.")
+        }
+        User user = (User) obj;
+        // To Do: add to the comment model to update.
+        comment.setUser(user);
+        comment.setMovie(movieId);
+
+        if (comment.isFlagged && comment.length != 0) {
+            console.log("Inappropriate comment.");
+            comment.updateComment();
+        }
+
+        if (comment.isEndorse && comment.length != 0) {
+            console.log("Endorsed comment: " + comment.toString);
+            comment.endorseComment();
+        }
     }
 }

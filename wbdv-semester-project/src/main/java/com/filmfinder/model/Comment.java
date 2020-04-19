@@ -18,6 +18,8 @@ public class Comment {
     @CreationTimestamp
     private LocalDateTime postedOn;
 
+    public String[] endorsedComments = new String[];
+
     public int getId() {
         return id;
     }
@@ -56,5 +58,13 @@ public class Comment {
 
     public void setPostedOn(LocalDateTime postedOn) {
         this.postedOn = postedOn;
+    }
+
+    public void flagComment(String comment) {
+        this.comment = "";
+    }
+
+    public void endorseComment(String comment) {
+        endorsedComments.add(comment);
     }
 }
