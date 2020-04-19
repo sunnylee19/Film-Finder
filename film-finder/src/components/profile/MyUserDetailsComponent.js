@@ -159,6 +159,19 @@ class MyUserDetailsComponent extends React.Component {
                             </div>
                             }
 
+                            {user &&
+                            <div className="form-group row">
+                                <label htmlFor="colFormLabelSm"
+                                       className="col-sm-4 col-form-label col-form-label-sm">
+                                    Status
+                                </label>
+                                <div className="col-sm-8">
+                                    <input readOnly type="text"
+                                           className = "form-control form-control-sm"
+                                           id="colFormLabelSm" placeholder={"User"}/>
+                                </div>
+                            </div>}
+
                         </form>
                         {!state.isEditing && user &&
                         <button className="btn btn-secondary btn-block"

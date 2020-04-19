@@ -1,5 +1,6 @@
 import React from 'react';
 import {postComment} from "../../services/CommentService";
+import moment from "moment";
 
 class CommentComponent extends React.Component {
 
@@ -12,19 +13,14 @@ class CommentComponent extends React.Component {
         return (
             <div>
                 <ul>
-                    <li>
-                        <textarea>Zootopia- "This is a really good movie, must watch!"</textarea>
+                    <li class="border border-dark">
+                        <p>Zootopia- "This is a really good movie, must watch!"
+                        {moment().calendar().day}</p>
                     </li>
 
                 </ul>
 
                 <br/>
-
-                <h1>Comments Posted By User: </h1>
-
-                <ul>
-                    <li>Star Wars- "Very enjoyable, definitely nice movie after semester ends."</li>
-                </ul>
 
                 <button class="btn btn-group-sm btn-success" onClick={this.addComment}>
                     Add Comment
