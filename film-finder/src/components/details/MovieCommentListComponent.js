@@ -21,10 +21,6 @@ export default withUser(({id, user}) => {
         await updateComments();
     };
 
-    const handleFlagComment = async () => {
-        console.log("Comment flagged.");
-    }
-
     const handleRemoveComment = async() => {
         if (commentText.length < 0) return;
         await removeComment(id,  {
@@ -51,12 +47,6 @@ export default withUser(({id, user}) => {
                 <br/>
                 <button className="btn btn-primary" onClick={handlePostComment}>
                     Post Comment
-                </button>
-                <button className="btn btn-warning" onClick={handleFlagComment}>
-                    Flag Comment <i className="fa fa-flag"></i>
-                </button>
-                <button class="btn btn-group-sm btn-danger" onClick={removeComment}>
-                    Delete Comment
                 </button>
             </div>}
         </div>

@@ -13,6 +13,33 @@ import java.util.List;
 @CrossOrigin(allowCredentials = "true", origins = {"http://localhost:3000", "https://cs5610-film-finder.herokuapp.com"})
 public class CommentController {
     private static final String USER_KEY = "user";
+    private boolean flagged;
+    private boolean endorsed;
+    private boolean deleted;
+
+    public boolean isEndorsed() {
+        return endorsed;
+    }
+
+    public void setEndorsed(boolean endorsed) {
+        this.endorsed = endorsed;
+    }
+
+    public boolean isFlagged() {
+        return flagged;
+    }
+
+    public void setFlagged(boolean flagged) {
+        this.flagged = flagged;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
     @Autowired
     private CommentRepository commentRepository;
