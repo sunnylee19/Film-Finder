@@ -12,7 +12,10 @@ class CommentComponent extends React.Component {
         return (
             <div>
                 <ul>
-                    <li>Zootopia- "This is a really good movie, must watch!"</li>
+                    <li>
+                        <p>Zootopia- "This is a really good movie, must watch!"</p>
+                    </li>
+
                 </ul>
 
                 <br/>
