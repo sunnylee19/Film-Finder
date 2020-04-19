@@ -20,6 +20,10 @@ export default withUser(({id, user}) => {
         await updateComments();
     };
 
+    const handleFlagComment = async () => {
+        comments.filter()
+    }
+
 
     useEffect(() => {
         updateComments();
@@ -33,10 +37,15 @@ export default withUser(({id, user}) => {
             <span>No comments yet</span>}
             {user &&
             <div>
-                <textarea className="form-control" value={commentText} onChange={handleCommentChange}/>
+                <textarea className="form-control" value={commentText}
+                          placeholder="Enter comment here."
+                          onChange={handleCommentChange}/>
                 <br/>
                 <button className="btn btn-primary" onClick={handlePostComment}>
                     Post Comment
+                </button>
+                <button className="btn btn-danger" onClick={handleFlagComment}>
+                    Flag Comment <i className="fa fa-flag"></i>
                 </button>
             </div>}
         </div>

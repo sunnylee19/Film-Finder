@@ -10,6 +10,9 @@ export default ({comment}) => (
             <div className="comment-date">
                 Posted {moment(comment.postedOn).calendar()}
             </div>
+            <div className="comment-date">
+                Delete
+            </div>
         </div>
         <div className="card-body">
             {comment.body}
