@@ -10,9 +10,13 @@ h1 {
     font-family: Impact, serif;
 }
 
+body {
+    background-color: #f8f9fa!important;
+}
+
 .carousel .slide {
-    /*background-color: transparent !important;*/
-    background-color: darkblue;
+    background-color: #efefef!important;
+    /* background-color: darkblue; */
     max-height: 650px;
 }
 
