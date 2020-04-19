@@ -15,6 +15,7 @@ const send = (method) => async (url, body = {}) => {
 
 export const post = send('POST');
 export const put = send('PUT');
+export const remove = send('DELETE');
 
 const query = (baseUrl, queryParams = {}) => {
     const queryPart = Object.keys(queryParams).map(key => `${key}=${encodeURIComponent(queryParams[key])}`).join('&')

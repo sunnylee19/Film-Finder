@@ -25,7 +25,6 @@ export default withUser(({id, user}) => {
         console.log("Comment flagged.");
     }
 
-
     useEffect(() => {
         updateComments();
     }, [id]);
