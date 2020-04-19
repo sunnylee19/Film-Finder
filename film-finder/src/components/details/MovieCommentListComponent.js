@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MovieCommentComponent from './MovieCommentComponent';
-import { findCommentsForMovie, postComment } from '../../services/CommentService';
+import { findCommentsForMovie, postComment, removeComment } from '../../services/CommentService';
 import withUser from '../../common/withUser';
 
 export default withUser(({id, user}) => {
@@ -25,6 +25,14 @@ export default withUser(({id, user}) => {
         console.log("Comment flagged.");
     }
 
+    const handleRemoveComment = async() => {
+        if (commentText.length < 0) return;
+        await removeComment(id,  {
+            body: commentText
+        });
+        await updateComments();
+    }
+
     useEffect(() => {
         updateComments();
     }, [id]);
@@ -44,8 +52,11 @@ export default withUser(({id, user}) => {
                 <button className="btn btn-primary" onClick={handlePostComment}>
                     Post Comment
                 </button>
-                <button className="btn btn-danger" onClick={handleFlagComment}>
+                <button className="btn btn-warning" onClick={handleFlagComment}>
                     Flag Comment <i className="fa fa-flag"></i>
+                </button>
+                <button class="btn btn-group-sm btn-danger" onClick={removeComment}>
+                    Delete Comment
                 </button>
             </div>}
         </div>

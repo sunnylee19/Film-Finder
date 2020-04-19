@@ -21,15 +21,6 @@ class CommentComponent extends React.Component {
                 </ul>
 
                 <br/>
-
-                <button class="btn btn-group-sm btn-success" onClick={this.addComment}>
-                    Add Comment
-                </button>
-
-                <button class="btn btn-group-sm btn-danger" onClick={this.removeComment}>
-                    Delete Comment
-                </button>
-
             </div>
         )
     }
