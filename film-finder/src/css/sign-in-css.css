@@ -49,4 +49,9 @@ body {
     border-top-right-radius: 0;
 }
 
+.card-title{
+    font-family: Quicksand, Asap, Dosis, sans-serif;
+    color: lightslategrey;
+}
+
 
