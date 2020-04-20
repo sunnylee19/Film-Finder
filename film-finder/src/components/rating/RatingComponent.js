@@ -19,7 +19,7 @@ export default (props) => {
         <li>
             <Box component="fieldset" mb={3} borderColor="transparent">
                 <Typography component="legend">
-                    <Link to={`/movies/${movie.id}`} className="movie-link">
+                    <Link to={`/details/${movie.id}`} className="movie-link">
                         {movie.title}
                     </Link>
                 </Typography>

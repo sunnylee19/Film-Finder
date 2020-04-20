@@ -13,7 +13,7 @@ export default withUser(props => {
     const {user} = props;
     const [searchText, setSearchText] = useState(queryParams.get('s') || '');
 
-    const doSearch = () => history.push(query('/movies', {s: searchText, page: 1}));
+    const doSearch = () => history.push(query('/search', {s: searchText, page: 1}));
     const handleSearchTextChange = e => setSearchText(e.target.value);
     const handleSearchKeyPress = e => e.key === 'Enter' && doSearch();
     const handleSearchButtonPress = e => {
@@ -57,7 +57,7 @@ export default withUser(props => {
             </Link>
             }
             {user &&
-            <Link className="nav-link" to="/user">
+            <Link className="nav-link" to="/profile">
                 My Profile <i className="fas fa-user"></i>
             </Link>
             }

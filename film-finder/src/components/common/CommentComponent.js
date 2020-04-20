@@ -12,7 +12,7 @@ export default (props) => {
         movie &&
         <li className="list-group-item">
             <h5>
-                <Link to={`/movies/${movie.id}#c${comment.id}`} className="movie-link">{movie.title}</Link>
+                <Link to={`/details/${movie.id}#c${comment.id}`} className="movie-link">{movie.title}</Link>
             </h5>
             {comment.body}
         </li>

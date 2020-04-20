@@ -21,7 +21,7 @@ class MovieComponent extends React.Component {
                         <div className="card-title">
                             <div className="wbdv-movie-title">
                                 <h4>
-                                    <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+                                    <Link to={`/details/${movie.id}`}>{movie.title}</Link>
                                 </h4>
                             </div>
                         </div>

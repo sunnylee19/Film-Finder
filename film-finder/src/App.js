@@ -34,10 +34,10 @@ const App = () =>
                 <Route exact path="/" component={HomePageComponent}/>
                 <Route exact path="/login" component={SignInPageComponent}/>
                 <Route exact path="/register" component={RegistrationComponent}/>
-                <Route exact path="/user" component={MyUserPageComponent}/>
-                <Route exact path="/user/:userId" component={UserPageComponent}/>
-                <Route exact path="/movies" component={ResultsComponent}/>
-                <Route exact path="/movies/:movieId" component={MovieDetailsComponent}/>
+                <Route exact path="/profile" component={MyUserPageComponent}/>
+                <Route exact path="/profile/:userId" component={UserPageComponent}/>
+                <Route exact path="/search" component={ResultsComponent}/>
+                <Route exact path="/details/:movieId" component={MovieDetailsComponent}/>
             </Switch>
         </Router>
     </Provider>

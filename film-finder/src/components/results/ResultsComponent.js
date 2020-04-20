@@ -2,12 +2,10 @@ import React from "react";
 import {searchMoviesByTitle} from "../../services/MovieService"
 import '../../css/home-page-css.css';
 import '../../css/user-page-css.css'
-import ResultsSearchComponent from "./ResultsSearchComponent";
 import '../../css/results-page-css.css'
 import ResultsGridComponent from "./ResultsGridComponent";
 import NavBarComponent from "../common/NavBarComponent";
 
-import ResultsListComponent from "./ResultsListComponent";
 import PaginationComponent from "./PaginationComponent";
 
 class ResultsComponent extends React.Component {

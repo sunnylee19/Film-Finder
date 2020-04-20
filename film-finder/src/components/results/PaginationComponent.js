@@ -12,7 +12,7 @@ export default ({numPages, page}) => {
         }
         pageComponents.push(
             <li className={classes.join(" ")} key={i}>
-                <a className="page-link" href={query('/movies', {s: queryParams.get('s'), page: i})}>{i}<span className="sr-only">(current)</span></a>
+                <a className="page-link" href={query('/search', {s: queryParams.get('s'), page: i})}>{i}<span className="sr-only">(current)</span></a>
             </li>
         );
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import withUser from '../../common/withUser';
+import {Link} from 'react-router-dom';
 
 const renderFlagTooltip = (props) => (
     <Tooltip id="flag-tooltip" {...props}>
@@ -40,7 +41,11 @@ export default withUser(({comment, user, removeComment, flagComment, endorseComm
         <div className="card" id={`c${comment.id}`}>
             <div className="card-header">
                 <div className="comment-name">
-                    {comment.user.firstName}
+                    <Link to={`/profile/${comment.user.id}`}>
+                        {comment.user.firstName}
+                        <span> </span>
+                        {comment.user.lastName}
+                    </Link>
                 </div>
                 <div className="comment-date">
                     Posted {moment(comment.postedOn).calendar()}
@@ -63,7 +68,7 @@ export default withUser(({comment, user, removeComment, flagComment, endorseComm
                         </span>
                         }
                         <span> </span>
-                        {user && user.type !== 'ADMIN' &&
+                        {user && user.type !== 'ADMIN' && !comment.flagged &&
                         <OverlayTrigger overlay={renderFlagTooltip} placement="top">
                             <button className="btn btn-sm btn-warning" onClick={handleFlagComment}>
                                 <h6>Flag&nbsp;&nbsp;<span></span><i className="fa fa-flag"></i></h6>
@@ -71,7 +76,7 @@ export default withUser(({comment, user, removeComment, flagComment, endorseComm
                         </OverlayTrigger>
                         }
                         <span>&nbsp;</span>
-                        {user && user.type === 'ADMIN' &&
+                        {user && user.type === 'ADMIN' && !comment.endorsed &&
                         <OverlayTrigger overlay={renderEndorseTooltip} placement="top">
                             <button className="btn btn-sm btn-success" onClick={handleEndorseComment}>
                                 <h6>Endorse&nbsp;&nbsp;<i className="fa fa-thumbs-up"></i></h6>

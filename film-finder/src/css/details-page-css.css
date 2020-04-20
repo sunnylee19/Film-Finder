@@ -27,3 +27,7 @@ img.movie-poster {
 
     }
 }
+
+div.comment-name a {
+    color: inherit;
+}

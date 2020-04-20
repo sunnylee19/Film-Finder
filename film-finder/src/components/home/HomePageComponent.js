@@ -11,7 +11,7 @@ class HomePageComponent extends React.Component {
     }
 
     _doSearch() {
-        this.props.history.push(query('/movies', {
+        this.props.history.push(query('/search', {
             s: this.state.searchText
         }));
     }

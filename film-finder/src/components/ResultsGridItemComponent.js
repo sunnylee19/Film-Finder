@@ -12,7 +12,7 @@ export default ({movie}) => (
 
         
             <button className="wbdv-details-button btn btn-default">
-                <Link to={`/movies/${movie.id}`}>
+                <Link to={`/details/${movie.id}`}>
                     Details
                 </Link>
             </button>
