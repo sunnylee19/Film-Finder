@@ -1,6 +1,4 @@
 import React from "react"
-import {faPencilAlt, faSave, faTrash} from "@fortawesome/free-solid-svg-icons"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import '../../css/movie-card-css.css'
 
 // Using same approach as Assignment select each result with active state.

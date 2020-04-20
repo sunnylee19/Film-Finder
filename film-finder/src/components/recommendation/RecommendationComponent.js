@@ -37,14 +37,14 @@ class RecommendationComponent extends React.Component {
         return (
             <div>
                 {user &&
-                <div className="text-center mt-5">
-                    <h1>Hello {user.firstName}!</h1>
+                <div className="welcome-text text-center mt-5">
+                    <h2 className="welcome-text">Hello {user.firstName}!</h2>
                 </div>
                 }
                 
                 {movies && movies.length > 0 &&
-                <div className="text-center mt-5">
-                    <h2>Your Recommendations</h2>
+                <div className="welcome-text text-center mt-5">
+                    <h2 className="welcome-text">Your Recommendations</h2>
                 </div>
                 }
                 {movies && movies.length > 0 &&
@@ -53,9 +53,9 @@ class RecommendationComponent extends React.Component {
                 </div>
                 }
                 {popular &&
-                <div className="text-center mt-5">
-                    <h2>What's Popular</h2>
-                </div>
+                 <div className="welcome-text text-center mt-5">
+                     <h2 className="welcome-text">What's Popular</h2>
+                 </div>
                 }
                 {popular &&
                 <div>

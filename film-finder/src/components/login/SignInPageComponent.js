@@ -49,7 +49,8 @@ class SignInPageComponent extends React.Component {
                     <input type="password" id="inputPassword" className="form-control"
                             placeholder="Password" required="" value={password} onChange={this._handleChangePassword}/>
                     <button className="btn btn-md btn-dark btn-block"
-                            type="submit">Sign in
+                            type="submit">
+                        Sign in
                     </button>
                     {error && <span className="text-danger">{error}</span>}
                 </form>

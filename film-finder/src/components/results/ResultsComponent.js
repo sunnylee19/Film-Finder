@@ -81,7 +81,8 @@ class ResultsComponent extends React.Component {
                 }
 
                 <div className="container">
-                    <PaginationComponent page={this.state.page} numPages={this.state.numPages}/>
+                    <PaginationComponent
+                                         page={this.state.page} numPages={this.state.numPages}/>
                 </div>
             </div>
         )

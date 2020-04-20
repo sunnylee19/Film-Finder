@@ -11,13 +11,15 @@ export default ({numPages, page}) => {
             classes.push("active");
         }
         pageComponents.push(
+
             <li className={classes.join(" ")} key={i}>
-                <a className="page-link" href={query('/search', {s: queryParams.get('s'), page: i})}>{i}<span className="sr-only">(current)</span></a>
+                <a className="page-link page-numbers" href={query('/search', {s: queryParams.get('s'), page: i})}>{i}<span className="sr-only">(current)</span></a>
             </li>
+
         );
     }
     return (
-        <ul className="pagination">
+        <ul className="pagination justify-content-center">
             {pageComponents}
         </ul>
     );

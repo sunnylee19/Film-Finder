@@ -1,9 +1,6 @@
 import React from "react";
-import {faPlusCircle} from "@fortawesome/free-solid-svg-icons"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import '../../css/results-page-css.css'
 import ResultsGridItemComponent from "./ResultsGridItemComponent";
-import {MOVIE_URL_SPIDERMAN} from "../../common/constants";
 
 /* Using same cards design as Assignment 4 for whiteboard. */
 
