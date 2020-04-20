@@ -12,7 +12,7 @@ export const searchMoviesByTitle = async (searchQuery, page=1) => {
         page
     });
     const asJson = await result.json();
-    if (!asJson.results) return [];
+    if (!asJson.results) return [[], 0];
 
     const movies = asJson.results.map(item => Movie.parseSearchResult(item));
     const numPages = asJson.total_pages;
