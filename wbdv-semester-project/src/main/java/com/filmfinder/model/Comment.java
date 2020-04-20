@@ -18,7 +18,8 @@ public class Comment {
     @CreationTimestamp
     private LocalDateTime postedOn;
     private Boolean flagged;
-    private Boolean endorsed;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Admin endorsed;
 
     public Boolean getFlagged() {
         return flagged;
@@ -28,11 +29,11 @@ public class Comment {
         this.flagged = flagged;
     }
 
-    public Boolean getEndorsed() {
+    public Admin getEndorsed() {
         return endorsed;
     }
 
-    public void setEndorsed(Boolean endorsed) {
+    public void setEndorsed(Admin endorsed) {
         this.endorsed = endorsed;
     }
 

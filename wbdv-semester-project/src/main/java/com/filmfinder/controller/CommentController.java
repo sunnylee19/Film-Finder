@@ -35,7 +35,7 @@ public class CommentController {
         comment.setUser(user);
         comment.setMovieId(movieId);
         comment.setFlagged(false);
-        comment.setEndorsed(false);
+        comment.setEndorsed(null);
         return this.commentRepository.save(comment);
     }
 
@@ -51,7 +51,7 @@ public class CommentController {
 
         Comment toUpdate = this.commentRepository.findById(commentId).get();
         if (comment.getFlagged() != null) toUpdate.setFlagged(comment.getFlagged());
-        if ((user instanceof Admin) && comment.getEndorsed() != null) toUpdate.setEndorsed(comment.getEndorsed());
+        if ((user instanceof Admin) && comment.getEndorsed() != null) toUpdate.setEndorsed((Admin)user);
 
         return this.commentRepository.save(toUpdate);
     }

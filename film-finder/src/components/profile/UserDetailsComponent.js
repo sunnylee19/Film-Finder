@@ -4,6 +4,7 @@ import {updateMyProfile} from '../../services/UserService';
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import Button from "@material-ui/core/Button";
+import withUser from '../../common/withUser';
 
 class UserDetailsComponent extends React.Component {
 
@@ -65,7 +66,7 @@ class UserDetailsComponent extends React.Component {
                          <h1 className="card-title text-center">
                              {user.firstName}
 
-                             <IconButton color={user.endorsed ? "secondary" : "default"} disabled={this.props.editable} disableRipple={this.props.editable} onClick={this.props.endorseUser}>
+                             <IconButton color={user.endorsed ? "secondary" : "default"} disabled={this.props.editable || !this.props.loggedIn} disableRipple={this.props.editable || !this.props.loggedIn} onClick={this.props.endorseUser}>
                                  <FavoriteTwoToneIcon style={{ fontSize: 40 }}/>
                                  <Button color="secondary" disabled style={{ fontSize: 40 }}>
                                      {user.numEndorsements}
@@ -225,4 +226,4 @@ class UserDetailsComponent extends React.Component {
     }
 }
 
-export default UserDetailsComponent;
+export default withUser(UserDetailsComponent, 'loggedIn');

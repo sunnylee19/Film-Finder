@@ -177,7 +177,10 @@ public class UserController {
 
         Optional<User> u = this.userRepository.findUserProfile(user.getId());
         if (!u.isPresent()) return null;
-        u.get().getComments().forEach(item -> item.setUser(null));
+        u.get().getComments().forEach(item -> {
+            item.setUser(null);
+            item.setEndorsed(null);
+        });
         u.get().getRatings().forEach(item -> item.getId().setUser(null));
         return u.get();
     }
@@ -188,7 +191,10 @@ public class UserController {
         if (!u.isPresent()) {
             return u;
         }
-        u.get().getComments().forEach(item -> item.setUser(null));
+        u.get().getComments().forEach(item -> {
+            item.setUser(null);
+            item.setEndorsed(null);
+        });
         u.get().getRatings().forEach(item -> item.getId().setUser(null));
         u.get().setNumEndorsements(this.endorsementRepository.numEndorsementsForUser(u.get().getId()));
         Object attr = session.getAttribute(USER_KEY);

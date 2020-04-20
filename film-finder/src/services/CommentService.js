@@ -22,6 +22,6 @@ export const flagComment = async (commentId, flagged = true) => {
 
 export const endorseComment = async (commentId, endorsed = true) => {
     return await put(API_URL + `/comments/${commentId}`, {
-        endorsed
+        endorsed: endorsed ? {} : null
     });
 };
