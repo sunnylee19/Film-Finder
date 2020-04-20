@@ -10,9 +10,14 @@ import {Link} from "react-router-dom";
 
 class MovieComponent extends React.Component {
 
-    _renderMovie = (movie) => {
+    _renderMovie = (movie, idx) => {
+        const classNames = ['col-md-4', 'movie'];
+        if (idx > 0) {
+            classNames.push('d-none');
+            classNames.push('d-md-block');
+        }
         return (
-            <div className="col-md-4 movie" key={movie.id}>
+            <div className={classNames.join(' ')} key={movie.id}>
                 <div className="card movie">
                     <img className="wbdv-recommendation-poster homepage-movie-card"
                          src={movie.posterUrl}
@@ -58,7 +63,7 @@ class MovieComponent extends React.Component {
                 <Carousel>
                     {this._threeMap(this.props.movies, item => (
                         <div className="row carousel-row" key={item[0].id}>
-                            {item.map(movie => this._renderMovie(movie))}
+                            {item.map((movie, idx) => this._renderMovie(movie, idx))}
                         </div>
                     ))}
                 </Carousel>

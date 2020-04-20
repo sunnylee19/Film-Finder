@@ -15,9 +15,8 @@ body {
 }
 
 .carousel .slide {
-    background-color: #efefef!important;
     /* background-color: darkblue; */
-    max-height: 650px;
+    background-color: #282c34 !important;
 }
 
 .card {
