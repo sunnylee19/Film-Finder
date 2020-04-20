@@ -15,10 +15,11 @@ function PrivacyLinkComponent() {
         <div>
             <p>
                 I agree to the
-            <button type="button" className="btn btn-link"
-                    onClick={handleShow}>
+                <span> </span>
+            <a onClick={handleShow} href="#">
                 privacy policy
-            </button>
+            </a>
+                <span> </span>
                 of Film Finder.
             </p>
 

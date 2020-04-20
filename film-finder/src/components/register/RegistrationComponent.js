@@ -83,8 +83,7 @@ class RegistrationComponent extends React.Component {
             return <Redirect to="/"/>;
         }
         return (
-            <div>
-                <body className="text-center">
+            <div className="text-center">
                 <NavBarComponent/>
                 <form className="form-signin" onSubmit={this._handleSubmit}>
                     <div className="h1 logo">
@@ -122,11 +121,17 @@ class RegistrationComponent extends React.Component {
                         Last Name
                     </label>
 
-                        <div className="form-group form-control">
-                            <i className="fas fa-birthday-cake"></i>
-                        <DayPickerInput placeholder="YYYY-M-D"
-                                        onDayChange={this._handleChangeDob}/>
-                        </div>
+                    <DayPickerInput placeholder="Birthday (YYYY-M-DD)"
+                                    format="YYYY-MM-DD"
+                                    classNames={{
+                                        container: "form-group",
+                                        overlay: "DayPickerInput-Overlay",
+                                        overlayWrapper: "DayPickerInput-OverlayWrapper"
+                                    }}
+                                    inputProps={{
+                                        className: "form-control"
+                                    }}
+                                    onDayChange={this._handleChangeDob}/>
 
 
                     <div className="form-group">
@@ -147,13 +152,12 @@ class RegistrationComponent extends React.Component {
                         </label>
                     </div>
 
-                    <button className="form-group btn btn-md btn-dark btn-block" onClick={this._handleSubmit}
+                    <a className="form-group btn btn-md btn-dark btn-block" onClick={this._handleSubmit}
                             type="submit">Register
-                    </button>
+                    </a>
 
                     {error && <span className="text-danger">{error}</span>}
                 </form>
-                </body>
             </div>
         )
     }
