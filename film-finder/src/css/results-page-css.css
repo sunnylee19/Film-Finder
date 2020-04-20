@@ -29,6 +29,10 @@ li {
     list-style-type: none;
 }
 
+ul.pagination {
+    flex-wrap: wrap;
+}
+
 img.wbdv-movie-poster {
     object-fit: contain;
     height: 350px;
