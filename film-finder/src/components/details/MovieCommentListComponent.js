@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MovieCommentComponent from './MovieCommentComponent';
-import { findCommentsForMovie, postComment, removeComment } from '../../services/CommentService';
+import { findCommentsForMovie, postComment, removeComment, flagComment, endorseComment } from '../../services/CommentService';
 import withUser from '../../common/withUser';
 
 export default withUser(({id, user}) => {
@@ -21,11 +21,18 @@ export default withUser(({id, user}) => {
         await updateComments();
     };
 
-    const handleRemoveComment = async() => {
-        if (commentText.length < 0) return;
-        await removeComment(id,  {
-            body: commentText
-        });
+    const handleRemoveComment = async (id) => {
+        await removeComment(id);
+        await updateComments();
+    };
+
+    const handleFlagComment = async (id, flagged = true) => {
+        await flagComment(id, flagged);
+        await updateComments();
+    };
+
+    const handleEndorseComment = async (id, endorsed = true) => {
+        await endorseComment(id, endorsed);
         await updateComments();
     }
 
@@ -35,7 +42,11 @@ export default withUser(({id, user}) => {
     return (
         <div>
             {comments.map(comment =>
-                <MovieCommentComponent comment={comment} key={comment.id}/>
+                <MovieCommentComponent comment={comment}
+                                       key={comment.id}
+                                       removeComment={handleRemoveComment}
+                                       flagComment={handleFlagComment}
+                                       endorseComment={handleEndorseComment}/>
             )}
             {comments.length === 0 && !loading &&
             <span>No comments yet</span>}

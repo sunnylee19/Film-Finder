@@ -17,6 +17,24 @@ public class Comment {
     private String body;
     @CreationTimestamp
     private LocalDateTime postedOn;
+    private Boolean flagged;
+    private Boolean endorsed;
+
+    public Boolean getFlagged() {
+        return flagged;
+    }
+
+    public void setFlagged(Boolean flagged) {
+        this.flagged = flagged;
+    }
+
+    public Boolean getEndorsed() {
+        return endorsed;
+    }
+
+    public void setEndorsed(Boolean endorsed) {
+        this.endorsed = endorsed;
+    }
 
     public int getId() {
         return id;

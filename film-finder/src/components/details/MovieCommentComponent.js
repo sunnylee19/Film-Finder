@@ -1,11 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-import {removeComment} from "../../services/CommentService";
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
-
-const handleFlagComment = async () => {
-    console.log("Comment flagged.");
-}
+import withUser from '../../common/withUser';
 
 const renderFlagTooltip = (props) => (
     <Tooltip id="flag-tooltip" {...props}>
@@ -15,38 +11,90 @@ const renderFlagTooltip = (props) => (
     </Tooltip>
 );
 
+const renderEndorseTooltip = (props) => (
+    <Tooltip id="endorse-tooltip" {...props}>
+        Endorse this comment as high quality content
+    </Tooltip>
+);
+
 const renderDeleteTooltip = (props) => (
     <Tooltip id="delete-tooltip" {...props}>
         <span className="tooltiptext">Remove comment.</span>
     </Tooltip>
 );
 
-export default ({comment}) => (
-    <div className="card" id={`c${comment.id}`}>
-        <div className="card-header">
-            <div className="comment-name">
-                {comment.user.firstName}
+export default withUser(({comment, user, removeComment, flagComment, endorseComment}) => {
+    const handleFlagComment = () => {
+        flagComment(comment.id);
+    };
+    const handleUnflagComment = () => {
+        flagComment(comment.id, false);
+    };
+    const handleEndorseComment = () => {
+        endorseComment(comment.id);
+    };
+    const handleDeleteComment = () => {
+        removeComment(comment.id);
+    };
+    return (
+        <div className="card" id={`c${comment.id}`}>
+            <div className="card-header">
+                <div className="comment-name">
+                    {comment.user.firstName}
+                </div>
+                <div className="comment-date">
+                    Posted {moment(comment.postedOn).calendar()}
+                </div>
             </div>
-            <div className="comment-date">
-                Posted {moment(comment.postedOn).calendar()}
+            <div className="card-body">
+                {comment.body}
+                <p></p>
+                <div className="row d-block">
+                    <div className="float-right">
+                        {comment.flagged &&
+                        <span className="text-danger">
+                                Flagged <i className="fa fa-flag"></i>
+                        </span>
+                        }
+                        <span> </span>
+                        {comment.endorsed &&
+                        <span className="text-success">
+                            Endorsed <i className="fa fa-thumbs-up"></i>
+                        </span>
+                        }
+                        <span> </span>
+                        {user && user.type !== 'ADMIN' &&
+                        <OverlayTrigger overlay={renderFlagTooltip} placement="top">
+                            <button className="btn btn-sm btn-warning" onClick={handleFlagComment}>
+                                <h6>Flag&nbsp;&nbsp;<span></span><i className="fa fa-flag"></i></h6>
+                            </button>
+                        </OverlayTrigger>
+                        }
+                        <span>&nbsp;</span>
+                        {user && user.type === 'ADMIN' &&
+                        <OverlayTrigger overlay={renderEndorseTooltip} placement="top">
+                            <button className="btn btn-sm btn-success" onClick={handleEndorseComment}>
+                                <h6>Endorse&nbsp;&nbsp;<i className="fa fa-thumbs-up"></i></h6>
+                            </button>
+                        </OverlayTrigger>
+                        }
+                        <span>&nbsp;</span>
+                        {user && user.type === 'ADMIN' && comment.flagged &&
+                        <button className="btn btn-sm btn-primary" onClick={handleUnflagComment}>
+                            <h6>Remove Flag&nbsp;&nbsp;<i className="fa fa-check"></i></h6>
+                        </button>
+                        }
+                        <span>&nbsp;</span>
+                        {user && user.type === 'ADMIN' &&
+                        <OverlayTrigger overlay={renderDeleteTooltip} placement="top">
+                            <button className="btn btn-sm btn-danger" onClick={handleDeleteComment}>
+                                <h6>Delete&nbsp;&nbsp;<i className="fa fa-trash"></i></h6>
+                            </button>
+                        </OverlayTrigger>
+                        }
+                    </div>
+                </div>
             </div>
         </div>
-        <div className="card-body">
-            {comment.body}
-            <p></p>
-            <div className="row float-right">
-                <OverlayTrigger overlay={renderFlagTooltip} placement="top">
-                    <button className="btn btn-sm btn-warning" onClick={handleFlagComment}>
-                        <h6>Flag&nbsp;&nbsp;<span></span><i className="fa fa-flag"></i></h6>
-                    </button>
-                </OverlayTrigger>
-                <span>&nbsp;</span>
-                <OverlayTrigger overlay={renderDeleteTooltip} placement="top">
-                    <button className="btn btn-sm btn-danger" onClick={removeComment}>
-                        <h6>Delete&nbsp;&nbsp;<i className="fa fa-trash"></i></h6>
-                    </button>
-                </OverlayTrigger>
-            </div>
-        </div>
-    </div>
-);
+    );
+});
