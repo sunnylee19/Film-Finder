@@ -1,8 +1,10 @@
 package com.filmfinder.controller;
 
 import com.filmfinder.model.Admin;
+import com.filmfinder.model.Endorsement;
 import com.filmfinder.model.Member;
 import com.filmfinder.model.User;
+import com.filmfinder.repository.EndorsementRepository;
 import com.filmfinder.util.Cryptography;
 import com.filmfinder.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private EndorsementRepository endorsementRepository;
 
     private static class Login {
         private String email;
@@ -186,7 +190,27 @@ public class UserController {
         }
         u.get().getComments().forEach(item -> item.setUser(null));
         u.get().getRatings().forEach(item -> item.getId().setUser(null));
+        u.get().setNumEndorsements(this.endorsementRepository.numEndorsementsForUser(u.get().getId()));
+        Object attr = session.getAttribute(USER_KEY);
+        if (attr != null) {
+            User user = (User)attr;
+            u.get().setEndorsed(this.endorsementRepository.existsEndorsement(user.getId(), u.get().getId()));
+        }
         return u;
+    }
+
+    @PostMapping("/api/users/{userId}/endorsements")
+    public Endorsement endorseUser(@PathVariable int userId, HttpSession session) {
+        Object attr = session.getAttribute(USER_KEY);
+        if (attr == null) throw new RuntimeException("Not logged in");
+        User user = (User)attr;
+
+        Endorsement e = new Endorsement();
+        Endorsement.EndorsementId id = new Endorsement.EndorsementId();
+        id.setUser1(user);
+        id.setUser2(this.userRepository.findById(userId).get());
+        e.setId(id);
+        return this.endorsementRepository.save(e);
     }
 
     @PutMapping("/api/users/user")

@@ -38,3 +38,6 @@ export const getMyProfile = async () => {
 
 export const updateMyProfile = async (user) => await put(API_URL + '/users/user', user);
 
+export const endorse = async (userId) => {
+    return await post(API_URL + `/users/${userId}/endorsements`);
+};

@@ -4,7 +4,7 @@ import UserRatingListComponent from "../profile/UserRatingListComponent";
 import UserCommentsListComponent from "../profile/UserCommentsListComponent";
 import UserDetailsComponent from "../profile/UserDetailsComponent";
 import NavBarComponent from "../common/NavBarComponent";
-import { getProfileForUser } from "../../services/UserService";
+import { getProfileForUser, endorse } from "../../services/UserService";
 
 
 export default (props) => {
@@ -16,13 +16,18 @@ export default (props) => {
             setUser(await getProfileForUser(userId));
         })();
     }, [props.match.params.userId]);
+    const endorseUser = async () => {
+        if (!user) return;
+        await endorse(user.id);
+        setUser(await getProfileForUser(user.id));
+    };
     return (
         user &&
         <div>
             <NavBarComponent/>
             <div className="row">
                 <div className="col-12 col-md-5 float-left">
-                    <UserDetailsComponent user={user} setUser={setUser} editable={false}/>
+                    <UserDetailsComponent user={user} setUser={setUser} editable={false} endorseUser={endorseUser}/>
                 </div>
                 <div className="col-12 col-md-7 float-right">
                     <UserRatingListComponent ratings={user.ratings}/>

@@ -15,6 +15,12 @@ class UserDetailsComponent extends React.Component {
         updatedPassword: ''
     };
 
+    endorseUser = () => {
+        const user = this.props.user;
+        if (user.endorsed) return;
+        this.props.endorseUser(user.id);
+    };
+
     updateForm = (newState) => {
         this.setState(newState)
     };
@@ -55,17 +61,17 @@ class UserDetailsComponent extends React.Component {
                     <div className="card-body">
 
                         {user &&
+
                          <h1 className="card-title text-center">
                              {user.firstName}
 
                              <IconButton color="secondary"  >
                                  <FavoriteTwoToneIcon style={{ fontSize: 40 }}/>
                                  <Button color="secondary" disabled style={{ fontSize: 40 }}>
-                                     358
+                                     679
                                  </Button>
                              </IconButton>
                          </h1>
-
                         }
                         <div>
 
@@ -192,6 +198,13 @@ class UserDetailsComponent extends React.Component {
                              </div>}
 
                         </form>
+                        {!this.props.editable && user.endorsed === false &&
+                        <button className="btn btn-primary btn-block" onClick={this.endorseUser}>
+                            Endorse <i className="fa fa-star"></i>
+                        </button>
+                        }
+                        {!this.props.editable && user.endorsed &&
+                        <span className="text-success"><i className="fa fa-star"></i> You've endorsed this user!</span>}
                         {this.props.editable && !state.isEditing && user &&
                          <button className="btn btn-secondary btn-block"
                                  onClick={() => {

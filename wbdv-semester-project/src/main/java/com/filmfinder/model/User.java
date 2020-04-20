@@ -1,8 +1,8 @@
 package com.filmfinder.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -26,6 +26,38 @@ public abstract class User {
     private List<Comment> comments;
     @OneToMany(mappedBy="id.user")
     private List<Rating> ratings;
+    @OneToMany(mappedBy="id.user2")
+    private List<Endorsement> endorsements;
+    @JsonSerialize
+    @Transient
+    private Boolean endorsed;
+    @JsonSerialize
+    @Transient
+    private int numEndorsements;
+
+    public int getNumEndorsements() {
+        return numEndorsements;
+    }
+
+    public void setNumEndorsements(int numEndorsements) {
+        this.numEndorsements = numEndorsements;
+    }
+
+    public Boolean getEndorsed() {
+        return endorsed;
+    }
+
+    public void setEndorsed(Boolean endorsed) {
+        this.endorsed = endorsed;
+    }
+
+    public List<Endorsement> getEndorsements() {
+        return endorsements;
+    }
+
+    public void setEndorsements(List<Endorsement> endorsements) {
+        this.endorsements = endorsements;
+    }
 
     public List<Rating> getRatings() {
         return ratings;
