@@ -44,19 +44,7 @@ export default ({numPages, page, totalPages = 20}) => {
             </li>
         );
     });
-    // for (let i = 1; i <= numPages; i++) {
-    //     let classes = ["page-item"];
-    //     if (i === page) {
-    //         classes.push("active");
-    //     }
-    //     pageComponents.push(
 
-    //         <li className={classes.join(" ")} key={i}>
-    //             <Link className="page-link page-numbers" to={query('/search', {s: queryParams.get('s'), page: i})}>{i}<span className="sr-only">(current)</span></Link>
-    //         </li>
-
-    //     );
-    // }
     return (
         <ul className="pagination justify-content-center">
             {pageComponents}
