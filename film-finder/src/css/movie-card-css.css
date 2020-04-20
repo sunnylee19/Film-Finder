@@ -61,3 +61,11 @@ a{
 .homepage-movie-link{
     color: white !important;
 }
+
+/* when resized to mobile view, only one movie should show. */
+
+@media (max-width: 768px)  {
+    .container#recommendation, .container#popular {
+        max-height: 460px;
+    }
+}

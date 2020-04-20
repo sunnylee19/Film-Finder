@@ -3,6 +3,7 @@ import MovieListComponent from "../movie/MovieListComponent";
 import withUser from '../../common/withUser';
 import { getMyRecommendations } from '../../services/UserService';
 import { findMovieById, getPopularMovies } from '../../services/MovieService';
+import '../../css/movie-card-css.css'
 
 class RecommendationComponent extends React.Component {
 
@@ -48,7 +49,7 @@ class RecommendationComponent extends React.Component {
                 </div>
                 }
                 {movies && movies.length > 0 &&
-                <div>
+                <div className="container" id="recommendation">
                     <MovieListComponent movies={movies}/>
                 </div>
                 }
@@ -58,7 +59,7 @@ class RecommendationComponent extends React.Component {
                  </div>
                 }
                 {popular &&
-                <div>
+                <div className="container" id="popular">
                     <MovieListComponent movies={popular}/>
                 </div>}
             </div>
