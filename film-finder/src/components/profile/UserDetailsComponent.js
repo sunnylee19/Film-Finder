@@ -65,10 +65,10 @@ class UserDetailsComponent extends React.Component {
                          <h1 className="card-title text-center">
                              {user.firstName}
 
-                             <IconButton color="secondary"  >
+                             <IconButton color={user.endorsed ? "secondary" : "default"} disabled={this.props.editable} disableRipple={this.props.editable} onClick={this.props.endorseUser}>
                                  <FavoriteTwoToneIcon style={{ fontSize: 40 }}/>
                                  <Button color="secondary" disabled style={{ fontSize: 40 }}>
-                                     679
+                                     {user.numEndorsements}
                                  </Button>
                              </IconButton>
                          </h1>
@@ -198,15 +198,8 @@ class UserDetailsComponent extends React.Component {
                              </div>}
 
                         </form>
-                        {!this.props.editable && user.endorsed === false &&
-                        <button className="btn btn-primary btn-block" onClick={this.endorseUser}>
-                            Endorse <i className="fa fa-star"></i>
-                        </button>
-                        }
-                        {!this.props.editable && user.endorsed &&
-                        <span className="text-success"><i className="fa fa-star"></i> You've endorsed this user!</span>}
-                        {this.props.editable && !state.isEditing && user &&
-                         <button className="btn btn-secondary btn-block"
+                        {this.props.editable && !state.isEditing &&
+                        <button className="btn btn-secondary btn-block"
                                  onClick={() => {
                                      this.updateForm({
                                                          isEditing: true

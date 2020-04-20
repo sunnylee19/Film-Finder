@@ -1,5 +1,5 @@
 import { API_URL } from "../common/constants";
-import { get, post, put } from "../common/query";
+import { get, post, put, remove } from "../common/query";
 import Movie from '../models/Movie';
 
 export const login = async (email, password) => {
@@ -40,4 +40,8 @@ export const updateMyProfile = async (user) => await put(API_URL + '/users/user'
 
 export const endorse = async (userId) => {
     return await post(API_URL + `/users/${userId}/endorsements`);
+};
+
+export const unendorse = async (userId) => {
+    return await remove(API_URL + `/users/${userId}/endorsements`);
 };

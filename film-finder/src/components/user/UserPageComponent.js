@@ -4,7 +4,7 @@ import UserRatingListComponent from "../profile/UserRatingListComponent";
 import UserCommentsListComponent from "../profile/UserCommentsListComponent";
 import UserDetailsComponent from "../profile/UserDetailsComponent";
 import NavBarComponent from "../common/NavBarComponent";
-import { getProfileForUser, endorse } from "../../services/UserService";
+import { getProfileForUser, endorse, unendorse } from "../../services/UserService";
 
 
 export default (props) => {
@@ -18,7 +18,11 @@ export default (props) => {
     }, [props.match.params.userId]);
     const endorseUser = async () => {
         if (!user) return;
-        await endorse(user.id);
+        if (!user.endorsed) {
+            await endorse(user.id);
+        } else {
+            await unendorse(user.id);
+        }
         setUser(await getProfileForUser(user.id));
     };
     return (

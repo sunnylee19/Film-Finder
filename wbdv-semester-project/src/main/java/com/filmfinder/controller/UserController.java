@@ -213,6 +213,19 @@ public class UserController {
         return this.endorsementRepository.save(e);
     }
 
+    @DeleteMapping("/api/users/{userId}/endorsements")
+    public int unendorseUser(@PathVariable int userId, HttpSession session) {
+        Object attr = session.getAttribute(USER_KEY);
+        if (attr == null) throw new RuntimeException("Not logged in");
+        User user = (User)attr;
+
+        Endorsement.EndorsementId id = new Endorsement.EndorsementId();
+        id.setUser1(user);
+        id.setUser2(this.userRepository.findById(userId).get());
+        this.endorsementRepository.deleteById(id);
+        return 1;
+    }
+
     @PutMapping("/api/users/user")
     public User updateProfile(HttpSession session, @RequestBody Update updatedUser) {
         Object attr = session.getAttribute(USER_KEY);
