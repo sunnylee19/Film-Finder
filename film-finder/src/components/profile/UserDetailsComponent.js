@@ -1,6 +1,9 @@
 import React from 'react';
 import '../../css/sign-in-css.css';
 import {updateMyProfile} from '../../services/UserService';
+import IconButton from "@material-ui/core/IconButton";
+import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
+import Button from "@material-ui/core/Button";
 
 class UserDetailsComponent extends React.Component {
 
@@ -44,16 +47,29 @@ class UserDetailsComponent extends React.Component {
         return (
             <div>
                 <div className="card user-box">
+
+
                     <img className="user-photo"
                          src="https://inayatmiah.files.wordpress.com/2015/01/fbpic.jpg"
                          alt="Card image cap"/>
                     <div className="card-body">
 
                         {user &&
-                         <h5 className="card-title text-center">
+                         <h1 className="card-title text-center">
                              {user.firstName}
-                         </h5>
+
+                             <IconButton color="secondary"  >
+                                 <FavoriteTwoToneIcon style={{ fontSize: 40 }}/>
+                                 <Button color="secondary" disabled style={{ fontSize: 40 }}>
+                                     358
+                                 </Button>
+                             </IconButton>
+                         </h1>
+
                         }
+                        <div>
+
+                        </div>
 
 
                         <form>

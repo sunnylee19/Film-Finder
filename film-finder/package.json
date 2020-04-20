@@ -48,6 +48,7 @@
   },
   "title": "Material demo",
   "devDependencies": {
+    "@material-ui/icons": "^4.9.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "latest"
   }
