@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-import { Modal} from 'react-bootstrap';
+import {Button, Modal} from 'react-bootstrap';
 import PrivacyPolicyContentComponent from "./PrivacyPolicyContentComponent";
 
 function PrivacyLinkComponent() {
@@ -26,14 +26,15 @@ function PrivacyLinkComponent() {
             <Modal centered show={show} onHide={handleClose}>
                 <Modal.Header >
                     <Modal.Title>Privacy Policy</Modal.Title>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close"
-                            onClick={handleClose}>
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </Modal.Header>
                 <Modal.Body>
                     <PrivacyPolicyContentComponent/>
                 </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="success" onClick={handleClose}>
+                        I understand and agree to the privacy policy
+                    </Button>
+                </Modal.Footer>
             </Modal>
         </div>
     );

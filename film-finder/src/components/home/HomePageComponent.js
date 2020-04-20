@@ -33,7 +33,7 @@ class HomePageComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="homepage">
                 <NavBarComponent/>
                 <RecommendationComponent/>
             </div>

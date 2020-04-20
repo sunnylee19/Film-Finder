@@ -12,16 +12,16 @@ class MovieComponent extends React.Component {
 
     _renderMovie = (movie) => {
         return (
-            <div className="col-md-4" key={movie.id}>
-                <div className="card">
-                    <img className="wbdv-recommendation-poster"
+            <div className="col-md-4 movie" key={movie.id}>
+                <div className="card movie">
+                    <img className="wbdv-recommendation-poster homepage-movie-card"
                          src={movie.posterUrl}
                          alt="Movie poster not available"/>
-                    <div className="card-body">
+                    <div className="card-body movie">
                         <div className="card-title">
                             <div className="wbdv-movie-title">
                                 <h4>
-                                    <Link to={`/details/${movie.id}`}>{movie.title}</Link>
+                                    <Link className="stretched-link homepage-movie-link" to={`/details/${movie.id}`}>{movie.title}</Link>
                                 </h4>
                             </div>
                         </div>
@@ -54,10 +54,10 @@ class MovieComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="carousel-homepage">
                 <Carousel>
                     {this._threeMap(this.props.movies, item => (
-                        <div className="row" key={item[0].id}>
+                        <div className="row carousel-row" key={item[0].id}>
                             {item.map(movie => this._renderMovie(movie))}
                         </div>
                     ))}

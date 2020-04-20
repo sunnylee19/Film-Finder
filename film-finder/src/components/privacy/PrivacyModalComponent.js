@@ -19,13 +19,17 @@ function PrivacyModalComponent() {
             <Modal centered show={show} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>Privacy Policy</Modal.Title>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close"
+                            onClick={handleClose}>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </Modal.Header>
                 <Modal.Body>
                     <PrivacyPolicyContentComponent/>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="success" onClick={handleClose}>
-                        I understand and agree to the privacy policy
+                    <Button variant="secondary" onClick={handleClose}>
+                        CLOSE
                     </Button>
                 </Modal.Footer>
             </Modal>

@@ -30,3 +30,34 @@ w3-card-4 {
     border-style: solid;
     margin-bottom: 10px;
 }
+
+.homepage {
+    background-color: #282c34;
+    overflow:auto;
+}
+.control-dots{
+    background-color: #282c34;
+}
+
+.carousel-row {
+    background-color: #282c34;
+    height:100%;
+}
+
+.movie {
+    background-color: #282c34;
+
+}
+
+.welcome-text{
+    color: white;
+    font-family: sans-serif;
+}
+
+a{
+    text-decoration:none !important;
+}
+
+.homepage-movie-link{
+    color: white !important;
+}

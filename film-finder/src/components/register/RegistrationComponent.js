@@ -152,9 +152,11 @@ class RegistrationComponent extends React.Component {
                         </label>
                     </div>
 
-                    <a className="form-group btn btn-md btn-dark btn-block" onClick={this._handleSubmit}
-                            type="submit">Register
-                    </a>
+                    <button className="form-group btn btn-md btn-dark btn-block"
+                       onClick={this._handleSubmit}
+                            type="submit">
+                        Register
+                    </button>
 
                     {error && <span className="text-danger">{error}</span>}
                 </form>
