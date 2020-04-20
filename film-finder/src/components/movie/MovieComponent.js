@@ -35,7 +35,7 @@ class MovieComponent extends React.Component {
                             <div className="row">
                                 {movie.genres.map(genre => (
                                     <div className="badge badge-secondary mr-sm-1" key={genre}>
-                                        {genre}
+                                        <h6>{genre}</h6>
                                     </div>
                                 ))}
                             </div>

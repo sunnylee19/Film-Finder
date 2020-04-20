@@ -45,7 +45,11 @@ w3-card-4 {
 
 .movie {
     background-color: #282c34;
+}
 
+.badge {
+    text-align: right;
+    margin: 5px 5px 5px 0px;
 }
 
 .welcome-text{
