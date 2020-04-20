@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(allowCredentials = "true", origins = {"http://localhost:3000", "https://cs5610-film-finder.herokuapp.com"})
@@ -62,10 +63,17 @@ public class CommentController {
         Object obj = session.getAttribute(USER_KEY);
         if (obj == null) {
             throw new RuntimeException("Not logged in");
-        } else if (!(obj instanceof Admin)) {
-            throw new RuntimeException("Only admins may delete comments");
         }
-        this.commentRepository.deleteById(commentId);
+        User user = (User)obj;
+        Optional<Comment> comment = this.commentRepository.findById(commentId);
+        if (!comment.isPresent()) return 0;
+        Comment c = comment.get();
+        if (user.getId() == c.getUser().getId() || user instanceof Admin) {
+            this.commentRepository.deleteById(commentId);
+        } else {
+            throw new RuntimeException("You may only delete your own comments unless you are an admin");
+        }
+
         return 1;
     }
 }

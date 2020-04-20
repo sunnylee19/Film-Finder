@@ -94,7 +94,7 @@ export default withUser(({comment, user, removeComment, flagComment, endorseComm
                         </button>
                         }
                         <span>&nbsp;</span>
-                        {user && user.type === 'ADMIN' &&
+                        {user && (user.type === 'ADMIN' || user.id === comment.user.id) &&
                         <OverlayTrigger overlay={renderDeleteTooltip} placement="top">
                             <button className="btn btn-sm btn-danger" onClick={handleDeleteComment}>
                                 <h6>Delete&nbsp;&nbsp;<i className="fa fa-trash"></i></h6>
