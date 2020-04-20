@@ -65,7 +65,7 @@ export default withUser(({comment, user, removeComment, flagComment, endorseComm
                         {comment.endorsed &&
                         <span className="text-success">
                             Endorsed by
-                            <Link to={`/profile/${comment.endorsed.id}`}>
+                            <Link className="text-success" to={`/profile/${comment.endorsed.id}`}>
                                 {' ' + comment.endorsed.firstName + ' ' + comment.endorsed.lastName + ' '}
                             </Link>
                             <i className="fa fa-thumbs-up"></i>
