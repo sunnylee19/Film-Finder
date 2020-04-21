@@ -3,9 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Modal,  Button } from 'react-bootstrap';
 import PrivacyPolicyContentComponent from "./PrivacyPolicyContentComponent";
+import { useLocation } from 'react-router';
 
 function PrivacyModalComponent() {
-    const [show, setShow] = useState(false);
+    const hash = useLocation().hash;
+    const [show, setShow] = useState(hash === '#privacy-policy');
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
