@@ -18,7 +18,7 @@ class MovieComponent extends React.Component {
         }
         return (
             <div className={classNames.join(' ')} key={movie.id}>
-                <div className="card movie">
+                <div className="card">
                     <img className="wbdv-recommendation-poster homepage-movie-card"
                          src={movie.posterUrl}
                          alt="Movie poster not available"/>
