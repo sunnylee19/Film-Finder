@@ -35,7 +35,6 @@ export default withUser(props => {
             <br/>
             {user && <span>Your Rating: <Rating name="my-rating" value={myRating} onChange={handleRatingChange}/></span>}
             <br/>
-            <button className="btn btn-success">Submit Rating</button>
         </div>
     );
 });
