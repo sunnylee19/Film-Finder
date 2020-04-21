@@ -198,7 +198,7 @@ class UserDetailsComponent extends React.Component {
                                  <div className="col-sm-8">
                                      <input readOnly type="text"
                                             className="form-control form-control-sm"
-                                            id="colFormLabelSm" placeholder={user.role}/>
+                                            id="colFormLabelSm" placeholder={user.type}/>
                                  </div>
                              </div>}
 
