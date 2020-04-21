@@ -46,23 +46,32 @@ class RegistrationComponent extends React.Component {
         const {firstName, lastName, email, password, confirmPassword, role, dob} = this.state;
         if (password !== confirmPassword) {
             this.setState({
-                              error: 'Passwords do not match'
+                              error: 'Passwords do not match.'
                           });
         } else if (firstName.trim() === '' || lastName.trim() === '') {
             this.setState({
-                              error: 'Please enter your name'
+                              error: 'Please enter your name.'
                           });
         } else if (dob.isSameOrAfter(moment(moment().format('YYYY-MM-DD'), 'YYYY-MM-DD'))) {
             this.setState({
-                              error: 'Please select a valid birthday'
+                              error: 'Please select a valid birthday.'
                           });
         } else if (email.trim() === '') {
             this.setState({
-                              error: 'Please enter your email'
+                              error: 'Please enter your email.'
                           })
         } else if (password.trim() === '' || password.length < 6) {
             this.setState({
-                              error: 'Please enter a valid password'
+                              error: 'Please enter a valid password.'
+                          });
+        } else if (!email.includes('@') && email.length > 0) {
+            this.setState({
+                              error: 'Please enter a valid email with @ symbol.'
+                          });
+        } else if (!password.includes('ABCDEFGHIJKLMNOPRQSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')
+                   && password.length > 0) {
+            this.setState({
+                error: 'Please enter a valid password that is alphanumeric (A-Z, a-z, 0-9).'
                           });
         } else {
             try {

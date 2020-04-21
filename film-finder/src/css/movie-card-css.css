@@ -37,6 +37,11 @@ w3-card-4 {
 }
 .control-dots{
     background-color: #282c34;
+    size: 12px;
+}
+
+.control-arrows {
+    size: 8px !important;
 }
 
 .carousel-row {
