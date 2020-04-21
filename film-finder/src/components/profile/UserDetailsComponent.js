@@ -5,6 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import Button from "@material-ui/core/Button";
 import withUser from '../../common/withUser';
+import {Redirect} from 'react-router-dom';
 
 class UserDetailsComponent extends React.Component {
 
@@ -51,6 +52,9 @@ class UserDetailsComponent extends React.Component {
         const {user} = this.props;
         let state = this.state;
 
+        if (this.props.loggedIn && user && !this.props.editable && this.props.loggedIn.id === user.id) {
+            return <Redirect to="/profile"/>;
+        }
         return (
             <div>
                 <div className="card user-box">
