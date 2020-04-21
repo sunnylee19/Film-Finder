@@ -149,7 +149,7 @@ class RegistrationComponent extends React.Component {
 
 
                     <div className="form-group">
-                        <select name="inputRole" value={role} onChange={this._handleChangeRole} className="form-control">
+                        <select name="inputRole" value={role} onChange={this._handleChangeRole} className="custom-select">
                             <option value="MEMBER">Member</option>
                             <option value="ADMIN">Admin</option>
                         </select>
@@ -159,9 +159,9 @@ class RegistrationComponent extends React.Component {
                     </div>
 
                     <div className="form-group form-check">
-                        <input type="checkbox" className="form-check-input" value={this.state.privacyChecked} onChange={this._handleCheckPrivacy}>
+                        <input type="checkbox" className="form-check-input" id="privacy-check" value={this.state.privacyChecked} onChange={this._handleCheckPrivacy}>
                         </input>
-                        <label className="form-check-label" htmlFor="exampleCheck1">
+                        <label className="form-check-label" htmlFor="privacy-check">
                             <PrivacyLinkComponent/>
                         </label>
                     </div>
