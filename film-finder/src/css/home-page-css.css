@@ -31,6 +31,11 @@ img.wbdv-recommendation-poster {
 }
 
 .carousel ul.control-dots .dot {
-    height: 12px;
-    width: 12px;
+    height: 18px;
+    width: 18px;
+}
+
+.carousel ul.control-arrows .arrow {
+    height: 18px;
+    width: 18px;
 }
