@@ -20,7 +20,6 @@ const MyUserPageComponent = (props) => {
         })();
     }, [user]);
     if (!user) {
-        console.log(user, userLoading);
         if (!userLoading) return <Redirect to="/"/>;
         return null;
     }
