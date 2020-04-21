@@ -3,6 +3,7 @@ import '../../css/sign-in-css.css';
 import withUser from "../../common/withUser";
 import { login } from "../../services/UserService";
 import { Redirect } from "react-router";
+import {Link} from 'react-router-dom';
 import NavBarComponent from "../common/NavBarComponent";
 
 class SignInPageComponent extends React.Component {
@@ -53,6 +54,8 @@ class SignInPageComponent extends React.Component {
                         Sign in
                     </button>
                     {error && <span className="text-danger">{error}</span>}
+                    <p>For new users, please first register in the &nbsp;
+                        <Link className="btn-btn-link" to="/register">sign up page.</Link></p>
                 </form>
             </div>
         )
