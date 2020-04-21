@@ -18,6 +18,7 @@ export default withUser(({id, user}) => {
         await postComment(id, {
             body: commentText
         });
+        setCommentText('');
         await updateComments();
     };
 

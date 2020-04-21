@@ -24,8 +24,8 @@ export default withUser(props => {
 
     const handleRatingChange = async (_, value) => {
         value = parseInt(value);
-        await rateMovie(props.movieId, value);
         setMyRating(value);
+        await rateMovie(props.movieId, value);
         getRating();
     };
 
