@@ -8,6 +8,7 @@ import withUser from '../../common/withUser'
 import moment from 'moment';
 import { register } from '../../services/UserService';
 import { Redirect } from 'react-router';
+import {Link} from 'react-router-dom';
 import NavBarComponent from "../common/NavBarComponent";
 import PrivacyLinkComponent from "../privacy/PrivacyLinkComponent";
 
@@ -157,7 +158,8 @@ class RegistrationComponent extends React.Component {
                             type="submit">
                         Register
                     </button>
-
+                    <span><Link to="/login">Need to log in? Click here</Link></span>
+                    <br/>
                     {error && <span className="text-danger">{error}</span>}
                 </form>
             </div>

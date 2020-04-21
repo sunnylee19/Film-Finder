@@ -4,6 +4,7 @@ import withUser from "../../common/withUser";
 import { login } from "../../services/UserService";
 import { Redirect } from "react-router";
 import NavBarComponent from "../common/NavBarComponent";
+import { Link } from "react-router-dom";
 
 class SignInPageComponent extends React.Component {
 
@@ -52,6 +53,8 @@ class SignInPageComponent extends React.Component {
                             type="submit">
                         Sign in
                     </button>
+                    <span><Link to="/register">Need to sign up? Click here</Link></span>
+                    <br/>
                     {error && <span className="text-danger">{error}</span>}
                 </form>
             </div>
