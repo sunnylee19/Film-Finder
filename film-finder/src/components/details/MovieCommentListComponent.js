@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MovieCommentComponent from './MovieCommentComponent';
 import { findCommentsForMovie, postComment, removeComment, flagComment, endorseComment } from '../../services/CommentService';
 import withUser from '../../common/withUser';
+import { Link } from 'react-router-dom';
 
 export default withUser(({id, user}) => {
     const [comments, setComments] = useState([]);
@@ -61,6 +62,8 @@ export default withUser(({id, user}) => {
                     Post Comment
                 </button>
             </div>}
+            {!user &&
+            <span>Please <Link to="/login">sign in</Link> or <Link to="/register">register</Link> to comment</span>}
         </div>
     );
 });

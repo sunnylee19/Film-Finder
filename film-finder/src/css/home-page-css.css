@@ -29,3 +29,8 @@ img.wbdv-recommendation-poster {
     height: 350px;
     max-width: 100%;
 }
+
+.carousel ul.control-dots .dot {
+    height: 12px;
+    width: 12px;
+}
