@@ -67,8 +67,8 @@ class RegistrationComponent extends React.Component {
             this.setState({
                               error: 'Please enter a valid email with @ symbol.'
                           });
-        } else if (!password.includes('ABCDEFGHIJKLMNOPRQSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')
-                   && password.length > 0) {
+        } else if (password.includes('ABCDEFGHIJKLMNOPRQSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')
+                   && password.length < 0) {
             this.setState({
                 error: 'Please enter a valid password that is alphanumeric (A-Z, a-z, 0-9).'
                           });

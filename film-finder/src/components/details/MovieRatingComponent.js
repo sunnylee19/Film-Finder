@@ -34,8 +34,6 @@ export default withUser(props => {
             Average Rating: {<Rating readOnly={true} value={avgRating}/>}
             <br/>
             {user && <span>Your Rating: <Rating name="my-rating" value={myRating} onChange={handleRatingChange}/></span>}
-            <br/>
-            <button className="btn btn-success">Submit Rating</button>
         </div>
     );
 });
