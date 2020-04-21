@@ -24,7 +24,9 @@ const store = createStore(combineReducers({
     try {
         const me = await getMyProfile();
         store.dispatch(setUser(me));
-    } catch (ex) {}
+    } catch (ex) {
+        store.dispatch(setUser(null));
+    }
 })()
 
 const App = () =>
