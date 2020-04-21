@@ -51,7 +51,9 @@ export default withUser(({id, user}) => {
                                        endorseComment={handleEndorseComment}/>
             )}
             {comments.length === 0 && !loading &&
-            <span>No comments yet</span>}
+             <p>No comments yet</p>
+            }
+
             {user &&
             <div>
                 <textarea className="form-control" value={commentText}

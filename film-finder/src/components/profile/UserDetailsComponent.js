@@ -171,7 +171,7 @@ class UserDetailsComponent extends React.Component {
                              </div>
                             }
 
-                            {user &&
+                            {user && this.props.editable &&
                              <div className="form-group row">
                                  <label htmlFor="colFormLabelSm"
                                         className="col-sm-4 col-form-label col-form-label-sm">
@@ -185,16 +185,16 @@ class UserDetailsComponent extends React.Component {
                              </div>
                             }
 
-                            {user &&
+                            {user && this.props.editable &&
                              <div className="form-group row">
                                  <label htmlFor="colFormLabelSm"
                                         className="col-sm-4 col-form-label col-form-label-sm">
-                                     Status
+                                     Account Type
                                  </label>
                                  <div className="col-sm-8">
                                      <input readOnly type="text"
                                             className="form-control form-control-sm"
-                                            id="colFormLabelSm" placeholder={"User"}/>
+                                            id="colFormLabelSm" placeholder={user.role}/>
                                  </div>
                              </div>}
 
