@@ -3,8 +3,8 @@ import '../../css/sign-in-css.css';
 import withUser from "../../common/withUser";
 import { login } from "../../services/UserService";
 import { Redirect } from "react-router";
-import {Link} from 'react-router-dom';
 import NavBarComponent from "../common/NavBarComponent";
+import { Link } from "react-router-dom";
 
 class SignInPageComponent extends React.Component {
 

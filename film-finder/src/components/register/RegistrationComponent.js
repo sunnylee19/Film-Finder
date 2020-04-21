@@ -8,6 +8,7 @@ import withUser from '../../common/withUser'
 import moment from 'moment';
 import { register } from '../../services/UserService';
 import { Redirect } from 'react-router';
+import {Link} from 'react-router-dom';
 import NavBarComponent from "../common/NavBarComponent";
 import PrivacyLinkComponent from "../privacy/PrivacyLinkComponent";
 
@@ -26,7 +27,8 @@ class RegistrationComponent extends React.Component {
         confirmPassword: '',
         role: 'MEMBER',
         dob: moment(),
-        error: null
+        error: null,
+        privacyChecked: false
     };
 
     _handleChangeFirstName = event => this.setState({firstName: event.target.value});
@@ -36,12 +38,12 @@ class RegistrationComponent extends React.Component {
     _handleChangeConfirmPassword = event => this.setState({confirmPassword: event.target.value});
     _handleChangeRole = event => this.setState({role: event.target.value});
     _handleChangeDob = day => this.setState({dob: moment(day, 'YYYY-M-D')});
+    _handleCheckPrivacy = event => this.setState({privacyChecked: event.target.checked});
 
     _handleSubmit = async (event) => {
         event.preventDefault();
-
-
-
+        this.setState({error: null});
+        const alphanumeric = /^[a-zA-Z0-9\- ]+$/;
         const {firstName, lastName, email, password, confirmPassword, role, dob} = this.state;
         if (password !== confirmPassword) {
             this.setState({
@@ -51,6 +53,10 @@ class RegistrationComponent extends React.Component {
             this.setState({
                               error: 'Please enter your name.'
                           });
+        } else if (!alphanumeric.test(firstName) || !alphanumeric.test(lastName)) {
+            this.setState({
+                error: 'Name must only contain letters, numbers, dashes, and spaces'
+            });
         } else if (dob.isSameOrAfter(moment(moment().format('YYYY-MM-DD'), 'YYYY-MM-DD'))) {
             this.setState({
                               error: 'Please select a valid birthday.'
@@ -61,17 +67,16 @@ class RegistrationComponent extends React.Component {
                           })
         } else if (password.trim() === '' || password.length < 6) {
             this.setState({
-                              error: 'Please enter a valid password.'
+                              error: 'Please enter a valid password (must have at least 6 characters).'
                           });
         } else if (!email.includes('@') && email.length > 0) {
             this.setState({
                               error: 'Please enter a valid email with @ symbol.'
                           });
-        } else if (password.includes('ABCDEFGHIJKLMNOPRQSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')
-                   && password.length < 0) {
+        } else if (!this.state.privacyChecked) {
             this.setState({
-                error: 'Please enter a valid password that is alphanumeric (A-Z, a-z, 0-9).'
-                          });
+                error: 'Please read and accept our privacy policy'
+            })
         } else {
             try {
                 const user = await register(email, password, firstName, lastName, moment(dob, 'YYYY-M-D'), role);
@@ -154,7 +159,7 @@ class RegistrationComponent extends React.Component {
                     </div>
 
                     <div className="form-group form-check">
-                        <input type="checkbox" className="form-check-input" id="exampleCheck1">
+                        <input type="checkbox" className="form-check-input" value={this.state.privacyChecked} onChange={this._handleCheckPrivacy}>
                         </input>
                         <label className="form-check-label" htmlFor="exampleCheck1">
                             <PrivacyLinkComponent/>
@@ -166,7 +171,8 @@ class RegistrationComponent extends React.Component {
                             type="submit">
                         Register
                     </button>
-
+                    <span><Link to="/login">Need to log in? Click here</Link></span>
+                    <br/>
                     {error && <span className="text-danger">{error}</span>}
                 </form>
             </div>
