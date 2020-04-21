@@ -171,7 +171,10 @@ class RegistrationComponent extends React.Component {
                             type="submit">
                         Register
                     </button>
-                    <span><Link to="/login">Need to log in? Click here</Link></span>
+                    <p>
+                        Already have an account?
+                        <Link to="/login"> Log In</Link>
+                    </p>
                     <br/>
                     {error && <span className="text-danger">{error}</span>}
                 </form>

@@ -54,8 +54,8 @@ class SignInPageComponent extends React.Component {
                         Sign in
                     </button>
                     {error && <span className="text-danger">{error}</span>}
-                    <p>For new users, please first register in the &nbsp;
-                        <Link className="btn-btn-link" to="/register">sign up page.</Link></p>
+                    <p>New to Film Finder? &nbsp;
+                        <Link className="btn-btn-link" to="/register">Sign Up</Link></p>
                 </form>
             </div>
         )
